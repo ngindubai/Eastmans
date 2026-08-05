@@ -169,6 +169,9 @@ p{color:var(--steel);max-width:48ch}
 .cap p{font-size:var(--lead);max-width:42ch}
 @media (min-width:760px){.cap{min-height:88svh}}
 
+.finale-stage{height:150svh;pointer-events:none}
+@media (min-width:760px){.finale-stage{height:185svh}}
+.nojs .finale-stage,.rm-static .finale-stage{display:none}
 .pad{padding:12svh var(--pad)}
 .grid2{display:flex;flex-wrap:wrap;gap:32px 56px;align-items:flex-start;margin-top:28px}
 .grid2>.a{flex:1 1 420px;min-width:min(280px,100%)}
@@ -248,6 +251,7 @@ p{color:var(--steel);max-width:48ch}
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.001ms!important;transition-duration:.001ms!important}
   #sx-cv,#sx-fin{display:none}
+  .finale-stage{display:none}
   .phase-b{position:static;opacity:1!important;padding-top:0}
   .phase{padding-bottom:4svh;opacity:1!important}
   #sx-hmeta{opacity:1!important}
@@ -462,6 +466,9 @@ p{color:var(--steel);max-width:48ch}
 </section>
 
 <section id="contact" aria-labelledby="h-con">
+  <!-- The street breaks apart and reassembles as the wordmark on empty ground.
+       This stage keeps that moment clear of the contact content below it. -->
+  <div class="finale-stage" aria-hidden="true"></div>
   <div class="pad" style="padding-bottom:0">
     <p class="lab"><i></i><span>07 / Contact</span></p>
     <h2 id="h-con">Start with a<br>private introduction.</h2>

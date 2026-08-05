@@ -785,15 +785,17 @@ window.EASTMANS_CONFIG = window.EASTMANS_CONFIG || {
     // canvas crossfades to the fixed overlay SVG (identical geometry, weight
     // and color / the handoff is invisible), the wordmark holds the screen
     // alone, then fades as the contact section scrolls in over it.
-    const xf = this.ramp(p, .66, .76);
-    const out = this.ramp(p, .8, .94); // gone before the contact copy crosses it
+    // The whole beat resolves early so the wordmark has fully cleared the
+    // screen before any contact copy scrolls into view.
+    const xf = this.ramp(p, .44, .52);   // canvas hands over to the SVG lockup
+    const out = this.ramp(p, .58, .70);  // gone well before the form arrives
     this.$('sx-fin').style.opacity = xf * (1 - out);
     if (this.act < 6) return; // the street belongs to sceneQuiet until section 07 leads
     const a = (1 - xf) * gA;
     if (a <= 0) return;
     // the street stays WHOLE until the section-06 copy has scrolled past,
     // then breaks apart / flying pieces leave while the fine detail dissolves
-    const m = this.eio(this.ramp(p, .3, .62));
+    const m = this.eio(this.ramp(p, .16, .42)); // street holds, then breaks apart
     const el = this.$('sx-finv');
     const r = this.finR || (this.finR = el.getBoundingClientRect()); // cached: fixed overlay, only moves on resize
     const vb = el.viewBox && el.viewBox.baseVal;
