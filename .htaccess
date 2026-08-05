@@ -14,8 +14,9 @@
 </IfModule>
 
 <IfModule mod_headers.c>
-  # Fingerprint-free assets change with the deploy, so keep HTML fresh and
-  # cache static assets hard.
+  # Assets are referenced with a ?v= content hash from index.html, so caching
+  # them hard is safe: a changed file gets a new URL. HTML stays fresh so the
+  # new hashes are picked up on the next visit.
   <FilesMatch "\.(woff2|png|svg|js)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
