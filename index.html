@@ -66,6 +66,21 @@ a.ul{color:#F2F1ED;text-decoration:underline}
 @media (min-width:760px){#sx-cv{opacity:1}}
 #sx-grain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:0}
 
+/* --- opening sequence ------------------------------------------------------
+   The plate is an opaque cover, not a replacement for the page: the real
+   markup paints underneath it on the first frame, so nothing is withheld from
+   the browser or from a crawler. While booting the canvas is lifted above the
+   plate so the map has somewhere to draw. */
+#sx-boot{position:fixed;inset:0;z-index:90;background:var(--ground);pointer-events:none;
+  opacity:0;visibility:hidden;transition:opacity .5s ease}
+#sx-load{position:absolute;left:50%;bottom:calc(6svh + env(safe-area-inset-bottom));
+  transform:translateX(-50%);font-family:var(--mono);font-size:11px;letter-spacing:.3em;
+  color:var(--steel);opacity:0}
+html.booting{overflow:hidden}
+html.booting #sx-boot{opacity:1;visibility:visible}
+html.booting #sx-load{opacity:1}
+html.booting #sx-cv{z-index:91;opacity:1}
+
 .site-head{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:flex-start;
   justify-content:space-between;gap:12px;padding:14px var(--pad);
   padding-top:calc(14px + env(safe-area-inset-top))}
@@ -100,9 +115,6 @@ p{color:var(--steel);max-width:48ch}
   .s-hero{min-height:150svh}
   #sx-lock svg{width:min(66vw,420px)}
 }
-@media (max-width:359px),(max-height:640px){
-  #sx-lock{display:none}
-}
 @media (max-width:359px){
   :root{--h1:clamp(27px,8.6vw,31px);--lead:15.5px}
   .hero-sub{max-width:30ch}
@@ -113,6 +125,9 @@ p{color:var(--steel);max-width:48ch}
   padding:calc(96px + env(safe-area-inset-top)) var(--pad) calc(32px + env(safe-area-inset-bottom))}
 #sx-lock{display:flex;align-items:center;justify-content:center;flex:none}
 #sx-lock svg{width:min(74vw,1120px);height:auto;overflow:visible}
+/* Must follow the base rule: a media query carries no extra specificity. The
+   smallest and shortest viewports give the headline the room instead. */
+@media (max-width:359px),(max-height:640px){#sx-lock{display:none}}
 .hero-copy{display:flex;flex-direction:column;gap:clamp(14px,2.4vh,20px)}
 .hero-sub{font-size:var(--lead);max-width:32ch;color:var(--steel)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px 14px;align-items:center}
@@ -250,7 +265,7 @@ p{color:var(--steel);max-width:48ch}
 /* Static, fully readable experience when motion is reduced or JS is absent. */
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.001ms!important;transition-duration:.001ms!important}
-  #sx-cv,#sx-fin{display:none}
+  #sx-cv,#sx-fin,#sx-boot{display:none}
   .finale-stage{display:none}
   .phase-b{position:static;opacity:1!important;padding-top:0}
   .phase{padding-bottom:4svh;opacity:1!important}
@@ -259,7 +274,7 @@ p{color:var(--steel);max-width:48ch}
   section{height:auto!important}
   .ann{display:none}
 }
-.nojs #sx-cv,.nojs #sx-fin{display:none}
+.nojs #sx-cv,.nojs #sx-fin,.nojs #sx-boot{display:none}
 .nojs .phase-b{position:static;opacity:1;padding-top:0}
 .nojs .sticky,.nojs .hero-in{position:static;height:auto;min-height:0}
 .nojs section{height:auto!important}
@@ -267,7 +282,7 @@ p{color:var(--steel);max-width:48ch}
 .nojs #sx-hmeta{opacity:1!important}
 
 </style>
-<script>document.documentElement.classList.remove('nojs')</script>
+<script>(function(e){e.classList.remove('nojs');try{if(matchMedia('(prefers-reduced-motion: reduce)').matches||location.hash||location.search.indexOf('nointro')>=0)return}catch(x){return}e.classList.add('booting');setTimeout(function(){e.classList.remove('booting')},11000)})(document.documentElement)</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ēastmans Developments","alternateName":"Eastmans Developments","url":"https://eastmans.london/","description":"London property development company specialising in planning-led conversions, extensions and mixed-use projects, with particular expertise in East London.","areaServed":"London, United Kingdom"}</script>
 </head>
 <body>
@@ -275,6 +290,11 @@ p{color:var(--steel);max-width:48ch}
 
 <canvas id="sx-cv" aria-hidden="true"></canvas>
 <div id="sx-grain" aria-hidden="true"></div>
+
+<!-- Opening sequence. The plate covers the page while East London draws itself
+     on the canvas above it, then condenses into the hero wordmark. The page
+     itself is fully painted underneath the whole time. -->
+<div id="sx-boot" aria-hidden="true"><span id="sx-load">000</span></div>
 
 <header class="site-head">
   <a class="brand" href="#introduction" data-jump="0" aria-label="Ēastmans Developments, back to top">

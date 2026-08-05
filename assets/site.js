@@ -101,10 +101,19 @@ window.EASTMANS_CONFIG = window.EASTMANS_CONFIG || {
     addEventListener('scroll', this.onScroll, { passive: true });
     addEventListener('keydown', this.onKey);
     this.measure();
+    // The opening sequence runs only when the plate actually went up before
+    // paint, motion is welcome, and the hero lockup is on screen for the map
+    // to morph into (it is suppressed on very small or very short viewports).
+    if (document.documentElement.classList.contains('booting') && !this.RM && this.lockSz && this.lockSz.w > 4) {
+      this.phase = 'load';
+      this.preload();
+    } else {
+      document.documentElement.classList.remove('booting');
+    }
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (!this.dead) this.measure(); });
     setTimeout(() => { if (!this.dead) this.measure(); }, 900);
     // dev hook: deterministic jumps for screenshots
-    window.__sxSet = y => { window.scrollTo(0, y); this.cur = y; this.idle = 0; this.introP = 1; this.introDone = true; this.tickOnce(); };
+    window.__sxSet = y => { this.finish(); window.scrollTo(0, y); this.cur = y; this.idle = 0; this.introP = 1; this.introDone = true; this.tickOnce(); };
     window.__sxV = 8;
     window.__sxDbg = () => ({ v: 8, act: this.act, vw: this.vw, vh: this.vh, innerW: innerWidth, innerH: innerHeight, dpr: this.dpr, y: Math.round(scrollY), cur: Math.round(this.cur), s6: this.secs && +this.sp(5).toFixed(2), top7: this.secs && this.secs[6] && this.secs[6].top });
     this.tick = this.tick.bind(this);
@@ -842,9 +851,173 @@ window.EASTMANS_CONFIG = window.EASTMANS_CONFIG || {
     }
   }
 
+  // ---------- opening sequence ----------
+  // The intro IS the opening scene rather than a spinner in front of it: East
+  // London draws itself on the live canvas while the real scene warm-up runs
+  // against an OFFSCREEN context, then every map line condenses into the hero
+  // wordmark and hands off, pixel-matched, to the lockup SVG. The wordmark
+  // appears exactly once; there is no second draw-in when the page goes live.
+  // The page markup is painted underneath the plate throughout, so nothing is
+  // withheld from the browser's first contentful paint.
+  SX.prototype.preload = function() {
+    scrollTo(0, 0);
+    this.$('sx-lockv').style.opacity = 0;
+    const oc = document.createElement('canvas');
+    const warm = [
+      () => this.sceneHeroCanvas(.8, 1, 0),
+      () => this.sceneContext(.5, 1),
+      () => this.sceneTransform(.3, 1),
+      () => this.sceneTransform(.8, 1),
+      () => this.scenePrinciples(.5, 1),
+      () => this.scenePrinciples(.95, 1),
+      () => this.sceneEast(.35, 1),
+      () => this.sceneEast(.65, 1),
+      () => this.sceneQuiet(.5, 1),
+      () => this.sceneFinale(.5, 1),
+      () => this.sceneFinale(.82, 1),
+      () => { this.elevSegs(); this.mapSegs(this.mapRect(true)); this.lockSegs(); }
+    ];
+    let i = 0; const total = warm.length + 2;
+    this.loadP = 0; this.loadDisp = 0;
+    // any deliberate input cuts the sequence short / never hold a visitor hostage
+    this.onSkip = () => this.skipLoad();
+    addEventListener('pointerdown', this.onSkip);
+    addEventListener('wheel', this.onSkip, { passive: true });
+    addEventListener('touchstart', this.onSkip, { passive: true });
+    addEventListener('keydown', this.onSkip);
+    const fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    Promise.race([fontsReady, new Promise(r => setTimeout(r, 1600))]).then(() => {
+      if (this.dead || this.phase !== 'load') return;
+      this.measure();
+      oc.width = this.cv.width; oc.height = this.cv.height;
+      const ox = oc.getContext('2d');
+      this.loadP = 2 / total;
+      const step = () => {
+        if (this.dead || this.phase !== 'load' || i >= warm.length) return;
+        const real = this.cx; this.cx = ox;
+        ox.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+        ox.clearRect(0, 0, this.vw, this.vh);
+        try { warm[i](); } catch (e) { }
+        this.cx = real;
+        // warm passes poke the overlay opacities / keep them dark until we go live
+        const f = this.$('sx-fin'); if (f) f.style.opacity = 0;
+        const e2 = this.$('sx-el'); if (e2) e2.style.opacity = 0;
+        i++; this.loadP = (2 + i) / total;
+        requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+    setTimeout(() => this.finish(), 9000); // hard cap / never trap the visitor
+  }
+
+  SX.prototype.skipLoad = function() {
+    if (this.phase !== 'load' || this.morphT0) return;
+    this.loadP = 1;
+    // rewind the clock rather than cutting: the morph still plays, just now
+    this.loadT0 = performance.now() - 4000;
+  }
+
+  SX.prototype.finish = function() {
+    if (this.dead || this.phase !== 'load') return;
+    this.phase = 'live';
+    ['pointerdown', 'wheel', 'touchstart', 'keydown'].forEach(t => removeEventListener(t, this.onSkip));
+    const fin = this.$('sx-fin'); if (fin) fin.style.opacity = 0;
+    const e = this.$('sx-el'); if (e) e.style.opacity = 0;
+    const lockv = this.$('sx-lockv'); if (lockv) lockv.style.opacity = '';
+    this.prepLock();
+    this.cx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+    this.cx.clearRect(0, 0, this.vw, this.vh);
+    document.documentElement.classList.remove('booting');
+    this.introT0 = performance.now();
+    this.introP = 1; this.introDone = true; // the lockup arrived via the morph / never redraw it
+    this.idle = 0;
+    this.measure();
+  }
+
+  // the SVG must be fully assembled BEFORE its fade-in: strokes drawn, sub-line
+  // set / the crossfade swaps two identical wordmarks
+  SX.prototype.prepLock = function() {
+    if (this._lockPrep) return;
+    this._lockPrep = 1;
+    this.strokes.forEach(s => { s.el.style.strokeDashoffset = 0; });
+    this.devs.style.opacity = 1;
+    this.devs.style.letterSpacing = '0.58em';
+  }
+
+  SX.prototype.loaderFrame = function(now) {
+    if (!this.loadT0) this.loadT0 = now;
+    const el = (now - this.loadT0) / 1000;
+    const c = this.cx;
+    c.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+    c.clearRect(0, 0, this.vw, this.vh);
+    const rect = this.mapRect(true);
+    if (((this.loadP >= 1 && el >= 4.0) || el >= 6.2) && !this.morphT0) this.morphT0 = now;
+    const mt = this.morphT0 ? (now - this.morphT0) / 1000 : 0;
+    const mo = this.eio(this.ramp(mt, .05, 1.15));
+    const xf = this.ramp(mt, 1.25, 1.7);
+    const mapP = this.eio(this.ramp(el, .1, 2.0));
+    if (mo < 1) {
+      this.drawMap(rect, mapP, .85 * (1 - mo), 0);
+      const lf = 1 - this.ramp(mt, 0, .3); // borough names dissolve as the morph begins
+      if (lf > 0) {
+        c.font = '10px "IBM Plex Mono",ui-monospace,monospace';
+        if ('letterSpacing' in c) c.letterSpacing = '2px';
+        const NAMES = ['WALTHAMSTOW', 'LEYTON', 'HACKNEY', 'STRATFORD', 'WANSTEAD', 'FOREST GATE'];
+        this.LOCS.forEach((l, i) => {
+          // one borough at a time: the cross pings, then the name types on
+          const f = this.ramp(el, 1.1 + i * .38, 1.6 + i * .38) * lf;
+          if (f <= 0) return;
+          const x = rect.x + l.x * rect.w, y = rect.y + l.y * rect.h;
+          const ca = this.ramp(f, 0, .25);
+          this.line(x - 7, y, x + 7, y, .6 * ca, 1); this.line(x, y - 7, x, y + 7, .6 * ca, 1);
+          const chars = Math.round(this.ramp(f, .18, 1) * NAMES[i].length);
+          const sub = NAMES[i].slice(0, chars);
+          c.fillStyle = 'rgba(242,241,237,' + (.9 * lf) + ')';
+          if (sub) c.fillText(sub, x + 12, y - 8);
+          if (chars < NAMES[i].length && ((now / 320) | 0) % 2) {
+            c.fillRect(x + 13 + (sub ? c.measureText(sub).width : 0), y - 17, 5, 10); // typing caret
+          }
+        });
+        if ('letterSpacing' in c) c.letterSpacing = '0px';
+      }
+    }
+    const lockv = this.$('sx-lockv');
+    if (mo > 0) {
+      const r = lockv.getBoundingClientRect();
+      if (r.width > 4) {
+        const vb = lockv.viewBox && lockv.viewBox.baseVal;
+        const sx = r.width / ((vb && vb.width) || 1180), sy = r.height / ((vb && vb.height) || 220);
+        const tgt = this.lockSegs();
+        if (mo >= 1) {
+          this.strokeChains(tgt.chains, r, sx, sy, 1 - xf); // held, then crossfades to the SVG
+        } else {
+          const src = this.mapSegs(rect), T = tgt.segs;
+          const wd = 1 + (3 * sx - 1) * mo; // land at the SVG's exact stroke weight
+          const n = Math.max(src.length, T.length);
+          for (let i = 0; i < n; i++) {
+            const s0 = src[i % src.length], t = T[i % T.length];
+            const t0 = r.left + t[0] * sx, t1 = r.top + t[1] * sy, t2 = r.left + t[2] * sx, t3 = r.top + t[3] * sy;
+            const live = i < T.length; // surplus map lines dissolve in flight
+            this.line(
+              s0[0] + (t0 - s0[0]) * mo, s0[1] + (t1 - s0[1]) * mo,
+              s0[2] + (t2 - s0[2]) * mo, s0[3] + (t3 - s0[3]) * mo,
+              live ? s0[4] + (1 - s0[4]) * mo : s0[4] * (1 - mo),
+              t[4] ? 0 : mo, wd
+            );
+          }
+        }
+      }
+    }
+    if (this.morphT0) this.prepLock();
+    lockv.style.opacity = this.morphT0 ? xf : 0;
+    const le = this.$('sx-load');
+    this.loadDisp += (this.loadP - this.loadDisp) * .12;
+    const digits = this.morphT0 ? 55 + 45 * this.ramp(mt, 0, 1.4) : 55 * (.4 * this.loadDisp + .6 * this.ramp(el, 0, 4.0));
+    if (le) { le.textContent = String(Math.round(digits)).padStart(3, '0'); le.style.opacity = 1 - xf; }
+    if (xf >= 1) this.finish();
+  }
+
   // ---------- frame ----------
-
-
 
   SX.prototype.tickOnce = function() { this.update(this.cur); this.draw(this.cur); }
 
@@ -857,6 +1030,11 @@ window.EASTMANS_CONFIG = window.EASTMANS_CONFIG || {
     else {
       this.cur += (target - this.cur) * Math.min(1, this.k.smooth * 1.6);
       if (Math.abs(target - this.cur) < .4) this.cur = target;
+    }
+    if (this.phase === 'load') { // East London draws, then condenses into the wordmark
+      this.loaderFrame(now);
+      if (this.curOn) this.cursorFrame(now);
+      return;
     }
     if (!this.introDone) {
       this.introP = this.clamp((now - this.introT0) / (this.mob ? 900 : 1600), 0, 1);
