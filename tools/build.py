@@ -79,6 +79,7 @@ def main():
     head = re.sub(r'url\("(/assets/fonts/[^"?]+)"\)', ver, head)
 
     template = read("src/template.html")
+    static_hero = read("src/static-hero.html")
     react = "assets/js/react.production.min.js"
     react_dom = "assets/js/react-dom.production.min.js"
     for req in (react, react_dom):
@@ -97,6 +98,7 @@ x-dc{{display:none!important}}
 </style>
 </head>
 <body>
+{static_hero.strip()}
 {template.strip()}
 <noscript>
 <div style="position:fixed;inset:0;background:#050505;color:#F2F1ED;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-family:'Instrument Sans','Helvetica Neue',Helvetica,Arial,sans-serif">

@@ -190,6 +190,49 @@ a:hover{color:#F2F1ED}
 input:-webkit-autofill,textarea:-webkit-autofill{-webkit-box-shadow:0 0 0 100px #0b0b0c inset;-webkit-text-fill-color:#F2F1ED}
 @keyframes sxFade{from{opacity:0}to{opacity:1}}
 @keyframes sxUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+
+/* ---- mobile art direction --------------------------------------------------
+   The template's inline styles are desktop-first; on a phone the page is
+   re-set rather than scaled down. React serialises inline styles with a
+   space after the colon, which is what the attribute selectors match. */
+@media (max-width: 759px){
+  /* the canvas supports the copy, it does not compete with it */
+  #sx-cv{opacity:.6}
+  /* annotation floors: technical labels never drop below 11px */
+  [style*="font-size: 8px"],[style*="font-size: 9px"],
+  [style*="font-size: 9.5px"],[style*="font-size: 10px"]{font-size:11px!important}
+  /* body copy reads at 16px with a settled line height */
+  [style*="font-size: clamp(14px"],[style*="font-size: clamp(15px"]{
+    font-size:16px!important;line-height:1.7!important}
+  /* the mobile hero is re-anchored: wordmark in the upper field, headline
+     sitting clear above the stacked calls to action */
+  #sx-lock{align-items:flex-start!important;padding-top:clamp(120px,26svh,240px)}
+  #sx-s1 h2{font-size:clamp(32px,8.6vw,40px)!important;line-height:1.18!important;
+    bottom:calc(11svh + 128px)!important;max-width:86vw!important}
+  /* every control is comfortably tappable */
+  button{min-height:44px}
+  /* the header fits 320px: tighter padding, and the brand sub-line trades
+     tracking for its larger floored size */
+  header{padding:16px 16px!important}
+  header nav button{padding:10px 8px!important;letter-spacing:.2em!important}
+  header [style*="font-size: 8px"]{letter-spacing:.3em!important}
+  /* section 02's floating coordinate annotation has no clear ground on a
+     phone-width canvas; the copy wins */
+  #sx-s2 [data-ann]{display:none!important}
+  /* section 06's copy column declares min-width:280px, five pixels wider
+     than a 320px viewport allows; let it shrink with the screen */
+  #sx-s6>div{min-width:0}
+  #sx-s6 [style*="min-width: 280px"]{min-width:0!important}
+}
+@media (max-width: 759px) and (max-height: 700px){
+  /* short viewports give the headline the room: the meta block yields */
+  #sx-hmeta,#sx-static .meta{display:none!important}
+}
+@media (max-width: 374px){
+  /* the primary call to action holds one line on the narrowest phones */
+  #sx-s1 [data-fd-sec="0"] button,#sx-static .cta-p{
+    letter-spacing:.15em!important;padding-left:16px!important;padding-right:16px!important}
+}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ēastmans Developments","alternateName":"Eastmans Developments","description":"London property development company specialising in planning-led conversions, extensions and mixed-use projects, with particular expertise in East London.","areaServed":"London, United Kingdom","url":"https://PLACEHOLDER-domain.example","email":"PLACEHOLDER-hello@example.com"}</script>
 <style>
@@ -199,6 +242,74 @@ x-dc{display:none!important}
 </style>
 </head>
 <body>
+<div id="sx-static" aria-hidden="true">
+  <!-- The instant mobile hero. Pure HTML and CSS, painted before a byte of
+       JavaScript runs, laid out to match the engine's finished hero exactly:
+       the engine removes this element the moment it has drawn its own first
+       frame, and the swap is invisible. Desktop keeps the cinematic loader
+       and never shows this. With JavaScript unavailable this stays up, so a
+       phone still gets the wordmark, headline and both calls to action. -->
+  <style>
+    #sx-static{position:fixed;inset:0;z-index:30;background:#050505;display:none;overflow:hidden}
+    @media (max-width:759px){#sx-static{display:block}}
+    #sx-static .lock{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:center;padding-top:clamp(120px,26svh,240px)}
+    #sx-static .lock svg{width:min(86vw,1120px);height:auto;display:block;overflow:visible}
+    #sx-static .head{position:absolute;left:7vw;bottom:calc(11svh + 128px);margin:0;font-weight:500;
+      font-size:clamp(32px,8.6vw,40px);line-height:1.18;letter-spacing:-0.005em;color:#F2F1ED;
+      font-family:'Instrument Sans','Helvetica Neue',Helvetica,Arial,sans-serif;max-width:86vw}
+    #sx-static .ctas{position:absolute;left:7vw;bottom:11svh;display:flex;flex-wrap:wrap;
+      align-items:center;gap:18px 26px}
+    #sx-static .cta-p{display:inline-flex;align-items:center;min-height:44px;
+      border:1px solid rgba(242,241,237,0.45);color:#F2F1ED;
+      font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+      letter-spacing:0.24em;padding:0 30px}
+    #sx-static .cta-s{display:inline-flex;align-items:center;min-height:44px;
+      border-bottom:1px solid rgba(167,171,177,0.45);color:#A7ABB1;
+      font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+      letter-spacing:0.24em;padding:0 2px}
+    #sx-static .meta{position:absolute;right:7vw;top:12svh;text-align:right;
+      display:flex;flex-direction:column;gap:8px}
+    #sx-static .meta span{font-family:'IBM Plex Mono',ui-monospace,monospace;
+      font-size:11px;letter-spacing:0.22em;text-transform:uppercase}
+    #sx-static .meta .a{color:#F2F1ED}
+    #sx-static .meta .b{color:#A7ABB1}
+  </style>
+  <div class="lock"><svg viewBox="0 0 1180 220">
+    <g>
+      <path d="M20 40 H1160" stroke="rgba(242,241,237,0.12)" stroke-width="1" fill="none"></path>
+      <path d="M20 90 H1160" stroke="rgba(242,241,237,0.09)" stroke-width="1" fill="none"></path>
+      <path d="M20 140 H1160" stroke="rgba(242,241,237,0.12)" stroke-width="1" fill="none"></path>
+      <path d="M40 12 V168" stroke="rgba(242,241,237,0.1)" stroke-width="1" fill="none"></path>
+      <path d="M233 12 V168" stroke="rgba(242,241,237,0.1)" stroke-width="1" fill="none"></path>
+      <path d="M511 12 V168" stroke="rgba(242,241,237,0.1)" stroke-width="1" fill="none"></path>
+      <path d="M799 12 V168" stroke="rgba(242,241,237,0.1)" stroke-width="1" fill="none"></path>
+      <path d="M947 12 V168" stroke="rgba(242,241,237,0.1)" stroke-width="1" fill="none"></path>
+      <path d="M1140 12 V168" stroke="rgba(242,241,237,0.1)" stroke-width="1" fill="none"></path>
+    </g>
+    <g fill="none" stroke-width="3">
+      <path d="M285 40 L233 40 L233 140 L285 140 M233 90 L273 90" stroke="#F2F1ED"></path>
+      <path d="M235 16 L283 16" stroke="#F2F1ED"></path>
+      <path d="M325 140 L353 40 L381 140 M336 100 L370 100" stroke="#F2F1ED"></path>
+      <path d="M469 52 C463 40 431 38 425 56 C420 71 433 83 445 88 C457 93 471 104 466 120 C461 136 429 140 421 126" stroke="#F2F1ED"></path>
+      <path d="M511 40 L567 40 M539 40 L539 140" stroke="#F2F1ED"></path>
+      <path d="M607 140 L607 40 L635 96 L663 40 L663 140" stroke="#F2F1ED"></path>
+      <path d="M703 140 L731 40 M714 100 L748 100" stroke="#F2F1ED"></path>
+      <path d="M731 40 L759 140" stroke="#A7ABB1"></path>
+      <path d="M799 140 L799 40 L857 140 L857 40" stroke="#F2F1ED"></path>
+      <path d="M945 52 C939 40 907 38 901 56 C896 71 909 83 921 88 C933 93 947 104 942 120 C937 136 905 140 897 126" stroke="#F2F1ED"></path>
+    </g>
+    <text x="590" y="196" text-anchor="middle" style="font-family:'Instrument Sans',sans-serif;font-size:23px;font-weight:500;letter-spacing:0.58em;fill:#A7ABB1">DEVELOPMENTS</text>
+  </svg></div>
+  <p class="head">Finding the opportunity.<br>Delivering the plan.</p>
+  <div class="ctas">
+    <span class="cta-p">REQUEST A PRIVATE INTRODUCTION</span>
+    <span class="cta-s">EXPLORE EASTMANS</span>
+  </div>
+  <div class="meta">
+    <span class="a">Planning-led property development</span>
+    <span class="b">London-wide / East London specialists</span>
+  </div>
+</div>
 <x-dc>
 
 <div style="background:#050505;min-height:100vh">
@@ -455,7 +566,7 @@ x-dc{display:none!important}
     <div>
       <button type="submit" style="background:transparent;border:1px solid rgba(242,241,237,0.4);color:#F2F1ED;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:0.24em;padding:19px 44px;cursor:pointer;transition:background .35s,color .35s,border-color .35s" style-hover="background:#F2F1ED;color:#050505;border-color:#F2F1ED" style-focus="outline:1px solid #A7ABB1;outline-offset:4px">REQUEST A PRIVATE INTRODUCTION</button>
       <p style="margin:20px 0 0;max-width:60ch;font-size:12.5px;line-height:1.75;color:rgba(167,171,177,0.85)">By submitting this form, you agree that Eastmans may use the information provided to respond to your enquiry. Please see our Privacy Policy for further information.</p>
-      <p style="margin:14px 0 0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.16em;color:rgba(167,171,177,0.6)">DEMO INTERFACE / SUBMISSIONS ARE NOT YET CONNECTED</p>
+      <p style="margin:14px 0 0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.16em;color:rgba(167,171,177,0.8)">DEMO INTERFACE / SUBMISSIONS ARE NOT YET CONNECTED</p>
     </div>
   </form>
   </sc-if>
@@ -469,17 +580,17 @@ x-dc{display:none!important}
     <div>
       <span style="display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.24em;color:#A7ABB1;margin-bottom:9px">EMAIL</span>
       <a href="mailto:hello@eastmansdevelopments.co.uk" style="font-size:16px;color:#F2F1ED">hello@eastmansdevelopments.co.uk</a>
-      <span style="display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:0.18em;color:rgba(167,171,177,0.55);margin-top:6px">PLACEHOLDER</span>
+      <span style="display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:0.18em;color:rgba(167,171,177,0.8);margin-top:6px">PLACEHOLDER</span>
     </div>
     <div>
       <span style="display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.24em;color:#A7ABB1;margin-bottom:9px">TELEPHONE</span>
       <a href="tel:+442000000000" style="font-size:16px;color:#F2F1ED">+44 (0)20 0000 0000</a>
-      <span style="display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:0.18em;color:rgba(167,171,177,0.55);margin-top:6px">PLACEHOLDER</span>
+      <span style="display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:0.18em;color:rgba(167,171,177,0.8);margin-top:6px">PLACEHOLDER</span>
     </div>
     <div>
       <span style="display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.24em;color:#A7ABB1;margin-bottom:9px">OFFICE</span>
       <span style="font-size:16px;color:#F2F1ED">London</span>
-      <span style="display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:0.18em;color:rgba(167,171,177,0.55);margin-top:6px">ADDRESS TO BE CONFIRMED</span>
+      <span style="display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:0.18em;color:rgba(167,171,177,0.8);margin-top:6px">ADDRESS TO BE CONFIRMED</span>
     </div>
   </div>
   <footer style="margin-top:96px;border-top:1px solid rgba(242,241,237,0.14);padding:30px 0 40px">
@@ -494,10 +605,10 @@ x-dc{display:none!important}
         <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.18em;color:#A7ABB1">Terms and Conditions</span>
         <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.18em;color:#A7ABB1">Company Information</span>
         <button data-i="6" sc-camel-on-click="{{jump}}" style="background:none;border:none;padding:0;text-align:left;cursor:pointer;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.18em;color:#A7ABB1;transition:color .3s" style-hover="color:#F2F1ED" style-focus="outline:1px solid #A7ABB1;outline-offset:3px">Contact</button>
-        <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:0.18em;color:rgba(167,171,177,0.5);margin-top:4px">POLICY PAGES TO BE PROVIDED</span>
+        <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:0.18em;color:rgba(167,171,177,0.8);margin-top:4px">POLICY PAGES TO BE PROVIDED</span>
       </div>
     </div>
-    <p style="margin:34px 0 0;max-width:96ch;font-size:11.5px;line-height:1.85;color:rgba(167,171,177,0.7)">Information presented on this website is provided for general introductory purposes only. It does not constitute investment, financial, legal or tax advice, or an offer or recommendation to invest. Any opportunity will be discussed separately and will be subject to its own terms, risks and professional review.</p>
+    <p style="margin:34px 0 0;max-width:96ch;font-size:11.5px;line-height:1.85;color:rgba(167,171,177,0.8)">Information presented on this website is provided for general introductory purposes only. It does not constitute investment, financial, legal or tax advice, or an offer or recommendation to invest. Any opportunity will be discussed separately and will be subject to its own terms, risks and professional review.</p>
     <p style="margin:20px 0 0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.18em;color:#A7ABB1">&copy; 2026 &#274;ASTMANS DEVELOPMENTS. ALL RIGHTS RESERVED.</p>
   </footer>
 </section>
@@ -506,7 +617,7 @@ x-dc{display:none!important}
 
 <div id="sx-ch" aria-hidden="true" style="position:fixed;left:26px;bottom:22px;z-index:40;display:flex;gap:10px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.22em">
   <span id="sx-chn" style="color:#F2F1ED">01</span>
-  <span style="color:rgba(167,171,177,0.6)">/ 07</span>
+  <span style="color:rgba(167,171,177,0.8)">/ 07</span>
   <span id="sx-chl" style="color:#A7ABB1;text-transform:uppercase">Introduction</span>
 </div>
 <div id="sx-rail" aria-hidden="true" style="position:fixed;right:28px;top:50%;transform:translateY(-50%);z-index:40;width:1px;height:min(30vh,260px);background:rgba(242,241,237,0.14)">
@@ -528,8 +639,8 @@ x-dc{display:none!important}
     </sc-for>
   </nav>
   <div style="display:flex;flex-wrap:wrap;gap:14px 44px;justify-content:space-between;padding:0 26px 26px">
-    <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.2em;color:rgba(167,171,177,0.7)">EAST LONDON / 51.56° N / 0.005° W</span>
-    <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.2em;color:rgba(167,171,177,0.7)">HELLO@EASTMANSDEVELOPMENTS.CO.UK / PLACEHOLDER</span>
+    <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.2em;color:rgba(167,171,177,0.8)">EAST LONDON / 51.56° N / 0.005° W</span>
+    <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.2em;color:rgba(167,171,177,0.8)">HELLO@EASTMANSDEVELOPMENTS.CO.UK / PLACEHOLDER</span>
   </div>
 </div>
 </sc-if>
@@ -593,8 +704,12 @@ class Component extends DCLogic {
     };
     this.cv = $('sx-cv'); this.cx = this.cv.getContext('2d');
     this.cur = scrollY; this.idle = 0;
-    this.phase = this.RM ? 'live' : 'load'; this.loadP = 0; this.loadDisp = 0;
-    this.introT0 = performance.now(); this.introP = this.RM ? 1 : 0; this.introDone = this.RM;
+    // A phone opens on the finished hero: content first, no cinematic loader.
+    // The loader remains the desktop opening scene.
+    this.mobBoot = innerWidth < 760;
+    const still = this.RM || this.mobBoot;
+    this.phase = still ? 'live' : 'load'; this.loadP = 0; this.loadDisp = 0;
+    this.introT0 = performance.now(); this.introP = still ? 1 : 0; this.introDone = still;
     this.buildModel(); this.buildMap();
     this.prepLogo(); this.prepReveals(); this.prepFades(); this.prepCursor(); this.makeGrain();
     this.locEls = [...document.querySelectorAll('[data-loc]')];
@@ -613,6 +728,9 @@ class Component extends DCLogic {
     window.__sxDbg = () => ({ v: 8, act: this.act, vw: this.vw, vh: this.vh, innerW: innerWidth, innerH: innerHeight, dpr: this.dpr, y: Math.round(scrollY), cur: Math.round(this.cur), s6: this.secs && +this.sp(5).toFixed(2), top7: this.secs && this.secs[6] && this.secs[6].top });
     this.tick = this.tick.bind(this);
     if (this.phase === 'load') this.preload();
+    // With the loader skipped the geometry caches fill lazily, on first use:
+    // an eager warm-up here lands inside the load window and blocks the main
+    // thread for no visible benefit.
     this.raf = requestAnimationFrame(this.tick);
   }
 
@@ -627,7 +745,7 @@ class Component extends DCLogic {
     this.cv.style.width = this.vw + 'px'; this.cv.style.height = this.vh + 'px';
     const secEls = [...document.querySelectorAll('main > section')];
     // separately art-directed mobile pacing: shorter scroll runways
-    const hh = this.mob ? ['230vh', '250vh', '280vh', null, '270vh'] : ['280vh', '280vh', '320vh', null, '300vh'];
+    const hh = this.mob ? ['145svh', '175svh', '195svh', null, '185svh'] : ['280vh', '280vh', '320vh', null, '300vh'];
     hh.forEach((v, i) => { if (v && secEls[i]) secEls[i].style.height = v; });
     this.secs = secEls.map(s => ({ top: s.offsetTop, h: s.offsetHeight }));
     this.docH = Math.max(1, document.documentElement.scrollHeight - this.vh);
@@ -637,11 +755,13 @@ class Component extends DCLogic {
     // mobile repositioning: keep annotations clear of copy
     const mset = (id, st) => { const el = this.$(id); if (el) Object.assign(el.style, st); };
     if (this.mob) {
+      mset('sx-s6', { minHeight: '120svh' });
       mset('sx-hmeta', { bottom: 'auto', top: '12svh' });
       mset('sx-chip', { top: 'auto', bottom: '7svh' });
       mset('sx-an1', { top: '50svh' });
       mset('sx-an2', { top: '62svh' });
     } else {
+      mset('sx-s6', { minHeight: '170vh' });
       mset('sx-hmeta', { top: 'auto', bottom: '13svh' });
       mset('sx-chip', { top: '16svh', bottom: 'auto' });
       mset('sx-an1', { top: '38svh' });
@@ -670,10 +790,10 @@ class Component extends DCLogic {
       return { el, len, s: 0.02 + o * 0.03, d: 0.1 };
     });
     this.gg = this.$('sx-gg'); this.devs = this.$('sx-devs');
-    if (!this.RM) {
+    if (!this.RM && !this.mobBoot) {
       this.strokes.forEach(s => { s.el.style.strokeDasharray = s.len + ' ' + s.len; s.el.style.strokeDashoffset = s.len; });
       this.devs.style.opacity = 0;
-    } else {
+    } else if (this.RM) {
       this.$('sx-el').style.opacity = 1;
     }
   }
@@ -685,7 +805,11 @@ class Component extends DCLogic {
       at: +(el.getAttribute('data-rv-at') || 0),
       on: false
     }));
-    if (!this.RM) this.rvs.forEach(r => { r.el.style.transform = 'translateY(115%)'; });
+    if (!this.RM) this.rvs.forEach(r => {
+      // the mobile hero opens finished: its lines are never hidden first
+      if (this.mobBoot && r.sec === 0) { r.on = true; return; }
+      r.el.style.transform = 'translateY(115%)';
+    });
     else this.rvs.forEach(r => { r.on = true; });
   }
 
@@ -1518,6 +1642,12 @@ class Component extends DCLogic {
     this.idle = settled ? this.idle + 1 : 0;
     if (this.idle < 5) { this.update(this.cur); this.draw(this.cur); }
     if (this.curOn) this.cursorFrame(now);
+    if (!this._shDone) {
+      // the pre-paint static hero has served its purpose: the engine owns the
+      // page from the first drawn frame onward
+      this._shDone = 1;
+      const sh = document.getElementById('sx-static'); if (sh) sh.remove();
+    }
   }
 
   update(y) {

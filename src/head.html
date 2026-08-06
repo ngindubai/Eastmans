@@ -186,5 +186,48 @@ a:hover{color:#F2F1ED}
 input:-webkit-autofill,textarea:-webkit-autofill{-webkit-box-shadow:0 0 0 100px #0b0b0c inset;-webkit-text-fill-color:#F2F1ED}
 @keyframes sxFade{from{opacity:0}to{opacity:1}}
 @keyframes sxUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+
+/* ---- mobile art direction --------------------------------------------------
+   The template's inline styles are desktop-first; on a phone the page is
+   re-set rather than scaled down. React serialises inline styles with a
+   space after the colon, which is what the attribute selectors match. */
+@media (max-width: 759px){
+  /* the canvas supports the copy, it does not compete with it */
+  #sx-cv{opacity:.6}
+  /* annotation floors: technical labels never drop below 11px */
+  [style*="font-size: 8px"],[style*="font-size: 9px"],
+  [style*="font-size: 9.5px"],[style*="font-size: 10px"]{font-size:11px!important}
+  /* body copy reads at 16px with a settled line height */
+  [style*="font-size: clamp(14px"],[style*="font-size: clamp(15px"]{
+    font-size:16px!important;line-height:1.7!important}
+  /* the mobile hero is re-anchored: wordmark in the upper field, headline
+     sitting clear above the stacked calls to action */
+  #sx-lock{align-items:flex-start!important;padding-top:clamp(120px,26svh,240px)}
+  #sx-s1 h2{font-size:clamp(32px,8.6vw,40px)!important;line-height:1.18!important;
+    bottom:calc(11svh + 128px)!important;max-width:86vw!important}
+  /* every control is comfortably tappable */
+  button{min-height:44px}
+  /* the header fits 320px: tighter padding, and the brand sub-line trades
+     tracking for its larger floored size */
+  header{padding:16px 16px!important}
+  header nav button{padding:10px 8px!important;letter-spacing:.2em!important}
+  header [style*="font-size: 8px"]{letter-spacing:.3em!important}
+  /* section 02's floating coordinate annotation has no clear ground on a
+     phone-width canvas; the copy wins */
+  #sx-s2 [data-ann]{display:none!important}
+  /* section 06's copy column declares min-width:280px, five pixels wider
+     than a 320px viewport allows; let it shrink with the screen */
+  #sx-s6>div{min-width:0}
+  #sx-s6 [style*="min-width: 280px"]{min-width:0!important}
+}
+@media (max-width: 759px) and (max-height: 700px){
+  /* short viewports give the headline the room: the meta block yields */
+  #sx-hmeta,#sx-static .meta{display:none!important}
+}
+@media (max-width: 374px){
+  /* the primary call to action holds one line on the narrowest phones */
+  #sx-s1 [data-fd-sec="0"] button,#sx-static .cta-p{
+    letter-spacing:.15em!important;padding-left:16px!important;padding-right:16px!important}
+}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ēastmans Developments","alternateName":"Eastmans Developments","description":"London property development company specialising in planning-led conversions, extensions and mixed-use projects, with particular expertise in East London.","areaServed":"London, United Kingdom","url":"https://PLACEHOLDER-domain.example","email":"PLACEHOLDER-hello@example.com"}</script>
