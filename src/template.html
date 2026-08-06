@@ -252,9 +252,9 @@
       <span aria-live="polite" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.14em;color:#C9CCD1;min-height:16px;margin-top:7px;display:block">{{errMsg}}</span>
     </div>
     <div>
-      <button type="submit" style="background:transparent;border:1px solid rgba(242,241,237,0.4);color:#F2F1ED;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:0.24em;padding:19px 44px;cursor:pointer;transition:background .35s,color .35s,border-color .35s" style-hover="background:#F2F1ED;color:#050505;border-color:#F2F1ED" style-focus="outline:1px solid #A7ABB1;outline-offset:4px">REQUEST A PRIVATE INTRODUCTION</button>
-      <p style="margin:20px 0 0;max-width:60ch;font-size:12.5px;line-height:1.75;color:rgba(167,171,177,0.85)">By submitting this form, you agree that Eastmans may use the information provided to respond to your enquiry. Please see our Privacy Policy for further information.</p>
-      <p style="margin:14px 0 0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.16em;color:rgba(167,171,177,0.8)">DEMO INTERFACE / SUBMISSIONS ARE NOT YET CONNECTED</p>
+      <button type="button" disabled="1" aria-disabled="true" style="opacity:0.45;background:transparent;border:1px solid rgba(242,241,237,0.4);color:#F2F1ED;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:0.24em;padding:19px 44px;cursor:pointer;transition:background .35s,color .35s,border-color .35s" style-hover="background:#F2F1ED;color:#050505;border-color:#F2F1ED" style-focus="outline:1px solid #A7ABB1;outline-offset:4px">REQUEST A PRIVATE INTRODUCTION</button>
+      <p style="margin:20px 0 0;max-width:60ch;font-size:12.5px;line-height:1.75;color:rgba(167,171,177,0.85)">By submitting this form, you agree that Eastmans may use the information provided to respond to your enquiry. Please see our <a href="/privacy.html" style="color:#C9CCD1;text-decoration:underline">Privacy Policy</a> for further information.</p>
+      <p style="margin:14px 0 0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.16em;color:rgba(167,171,177,0.8)">PRIVATE INTRODUCTION REQUESTS WILL OPEN SHORTLY</p>
     </div>
   </form>
   </sc-if>
@@ -264,23 +264,6 @@
     <p style="margin:0;font-size:clamp(15px,1.3vw,19px);line-height:1.65;color:#A7ABB1;max-width:48ch">Your request has been received. A member of the Eastmans development team will contact you directly.</p>
   </div>
   </sc-if>
-  <div style="display:flex;flex-wrap:wrap;gap:34px 70px;margin:90px 0 0">
-    <div>
-      <span style="display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.24em;color:#A7ABB1;margin-bottom:9px">EMAIL</span>
-      <a href="mailto:hello@eastmansdevelopments.co.uk" style="font-size:16px;color:#F2F1ED">hello@eastmansdevelopments.co.uk</a>
-      <span style="display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:0.18em;color:rgba(167,171,177,0.8);margin-top:6px">PLACEHOLDER</span>
-    </div>
-    <div>
-      <span style="display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.24em;color:#A7ABB1;margin-bottom:9px">TELEPHONE</span>
-      <a href="tel:+442000000000" style="font-size:16px;color:#F2F1ED">+44 (0)20 0000 0000</a>
-      <span style="display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:0.18em;color:rgba(167,171,177,0.8);margin-top:6px">PLACEHOLDER</span>
-    </div>
-    <div>
-      <span style="display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.24em;color:#A7ABB1;margin-bottom:9px">OFFICE</span>
-      <span style="font-size:16px;color:#F2F1ED">London</span>
-      <span style="display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:0.18em;color:rgba(167,171,177,0.8);margin-top:6px">ADDRESS TO BE CONFIRMED</span>
-    </div>
-  </div>
   <footer style="margin-top:96px;border-top:1px solid rgba(242,241,237,0.14);padding:30px 0 40px">
     <div style="display:flex;flex-wrap:wrap;gap:16px 44px;justify-content:space-between;align-items:flex-start">
       <div>
@@ -289,11 +272,9 @@
         <span style="display:block;font-size:13px;line-height:1.6;color:#A7ABB1;margin-top:10px">London-wide, with particular expertise in East London.</span>
       </div>
       <div style="display:flex;flex-direction:column;gap:9px">
-        <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.18em;color:#A7ABB1">Privacy Policy</span>
-        <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.18em;color:#A7ABB1">Terms and Conditions</span>
-        <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.18em;color:#A7ABB1">Company Information</span>
+        <a href="/privacy.html" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.18em;color:#A7ABB1;text-decoration:underline;text-underline-offset:3px" style-hover="color:#F2F1ED" style-focus="outline:1px solid #A7ABB1;outline-offset:3px">Privacy Policy</a>
+        <a href="/terms.html" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.18em;color:#A7ABB1;text-decoration:underline;text-underline-offset:3px" style-hover="color:#F2F1ED" style-focus="outline:1px solid #A7ABB1;outline-offset:3px">Terms and Conditions</a>
         <button data-i="6" sc-camel-on-click="{{jump}}" style="background:none;border:none;padding:0;text-align:left;cursor:pointer;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.18em;color:#A7ABB1;transition:color .3s" style-hover="color:#F2F1ED" style-focus="outline:1px solid #A7ABB1;outline-offset:3px">Contact</button>
-        <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:0.18em;color:rgba(167,171,177,0.8);margin-top:4px">POLICY PAGES TO BE PROVIDED</span>
       </div>
     </div>
     <p style="margin:34px 0 0;max-width:96ch;font-size:11.5px;line-height:1.85;color:rgba(167,171,177,0.8)">Information presented on this website is provided for general introductory purposes only. It does not constitute investment, financial, legal or tax advice, or an offer or recommendation to invest. Any opportunity will be discussed separately and will be subject to its own terms, risks and professional review.</p>
@@ -328,7 +309,6 @@
   </nav>
   <div style="display:flex;flex-wrap:wrap;gap:14px 44px;justify-content:space-between;padding:0 26px 26px">
     <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.2em;color:rgba(167,171,177,0.8)">EAST LONDON / 51.56° N / 0.005° W</span>
-    <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.2em;color:rgba(167,171,177,0.8)">HELLO@EASTMANSDEVELOPMENTS.CO.UK / PLACEHOLDER</span>
   </div>
 </div>
 </sc-if>
@@ -1499,6 +1479,12 @@ class Component extends DCLogic {
       if (f.elements[first]) f.elements[first].focus();
       return;
     }
+    // Submission is intentionally not connected. When a real endpoint
+    // exists, set window.EASTMANS_CONFIG.FORM_ENDPOINT and POST the fields
+    // here; the success state is already wired. Until then the form never
+    // pretends to send and never emits a request.
+    const cfg = window.EASTMANS_CONFIG || {};
+    if (!cfg.FORM_ENDPOINT) return;
     this.setState({ submitted: true });
   }
 

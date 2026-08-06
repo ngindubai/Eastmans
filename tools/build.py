@@ -108,7 +108,16 @@ x-dc{{display:none!important}}
   </div>
 </div>
 </noscript>
-<script>window.__resources={{}}</script>
+<script>
+/* Deployment configuration. Every value ships null and each feature stays
+   dormant until a real value is supplied:
+   - FORM_ENDPOINT: URL the introduction form will POST to. While null the
+     form is display-only: the submit control is disabled and nothing sends.
+   - GA4_ID / GSC_TOKEN: analytics and Search Console identifiers. While
+     null no tracking or verification markup exists on the page at all. */
+window.EASTMANS_CONFIG={{FORM_ENDPOINT:null,GA4_ID:null,GSC_TOKEN:null}};
+window.__resources={{}};
+</script>
 <script defer src="/{react}?v={sha8(react)}"></script>
 <script defer src="/{react_dom}?v={sha8(react_dom)}"></script>
 <script defer src="/{runtime}"></script>
