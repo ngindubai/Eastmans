@@ -1,0 +1,11 @@
+{
+  "name": "eastmans-site",
+  "private": true,
+  "description": "Eastmans Developments - single-page site. Build with: npm run build",
+  "scripts": {
+    "build": "python3 tools/build.py"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0"
+  }
+}
