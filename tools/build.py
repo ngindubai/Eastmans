@@ -72,11 +72,11 @@ def main():
     runtime = build_runtime()
 
     head = read("src/head.html")
-    # Version the font URLs: the host serves assets as immutable for a year,
-    # so the URL must change whenever the bytes do.
-    def ver(m):
-        return f'url("{m.group(1)}?v={sha8(m.group(1)[1:])}")'
-    head = re.sub(r'url\("(/assets/fonts/[^"?]+)"\)', ver, head)
+    # Version every font reference (css url() and preload href alike): the
+    # host serves assets as immutable for a year, so the URL must change
+    # whenever the bytes do.
+    head = re.sub(r'(")(/assets/fonts/[^"?]+)(?=")',
+                  lambda m: f'"{m.group(2)}?v={sha8(m.group(2)[1:])}', head)
 
     template = read("src/template.html")
     static_hero = read("src/static-hero.html")
