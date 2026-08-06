@@ -396,7 +396,12 @@ class Component extends DCLogic {
     // The loader remains the desktop opening scene.
     this.mobBoot = innerWidth < 760;
     const still = this.RM || this.mobBoot;
-    this.phase = still ? 'live' : 'load'; this.loadP = 0; this.loadDisp = 0;
+    // A visitor who watched the opening in the last six hours gets the
+    // condensed welcome instead: the hero draws itself in over ~2.4s.
+    let seen = false;
+    try { seen = Date.now() - (+localStorage.getItem('ex_intro_t') || 0) < 216e5; } catch (e) { }
+    if (this.mobBoot) { try { localStorage.setItem('ex_intro_t', String(Date.now())); } catch (e) { } }
+    this.phase = (still || seen) ? 'live' : 'load'; this.loadP = 0; this.loadDisp = 0;
     this.introT0 = performance.now(); this.introP = still ? 1 : 0; this.introDone = still;
     this.buildModel(); this.buildMap();
     this.prepLogo(); this.prepReveals(); this.prepFades(); this.prepCursor(); this.makeGrain();
@@ -1202,10 +1207,20 @@ class Component extends DCLogic {
       requestAnimationFrame(step);
     });
     setTimeout(() => this.finish(), 9000); // hard cap / never trap the visitor
+    // any deliberate input brings the morph forward: the sequence completes,
+    // just now / nobody is held behind the opening
+    this.onSkip = () => {
+      if (this.phase !== 'load' || this.morphT0) return;
+      this.loadP = 1;
+      this.loadT0 = performance.now() - 4000;
+    };
+    ['pointerdown', 'wheel', 'touchstart', 'keydown'].forEach(t => addEventListener(t, this.onSkip, { passive: true }));
   }
 
   finish() {
     if (this.dead || this.phase !== 'load') return;
+    try { localStorage.setItem('ex_intro_t', String(Date.now())); } catch (e) { }
+    if (this.onSkip) ['pointerdown', 'wheel', 'touchstart', 'keydown'].forEach(t => removeEventListener(t, this.onSkip));
     const fin = this.$('sx-fin'); if (fin) fin.style.opacity = 0;
     const e = this.$('sx-el'); if (e) e.style.opacity = 0;
     const lockv = this.$('sx-lockv'); if (lockv) lockv.style.opacity = '';
