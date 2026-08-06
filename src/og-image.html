@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face{font-family:'Instrument Sans';src:url(http://127.0.0.1:8823/assets/fonts/instrument-sans-var-latin.woff2) format('woff2');font-weight:400 700}
+  @font-face{font-family:'Instrument Sans';src:url(http://127.0.0.1:8823/assets/fonts/instrument-sans-var-latin-ext.woff2) format('woff2');font-weight:400 700;unicode-range:U+0100-024F}
+  @font-face{font-family:'IBM Plex Mono';src:url(http://127.0.0.1:8823/assets/fonts/plex-mono-400-latin.woff2) format('woff2');font-weight:400}
+  *{margin:0;padding:0}
+  body{width:1200px;height:630px;background:#050505;overflow:hidden;position:relative;
+    font-family:'Instrument Sans',sans-serif}
+  svg.map{position:absolute;inset:0;opacity:.5}
+  .lock{position:absolute;left:50%;top:212px;transform:translateX(-50%);width:760px}
+  .strap{position:absolute;left:0;right:0;top:432px;text-align:center;
+    font-family:'IBM Plex Mono',monospace;font-size:17px;letter-spacing:.34em;color:#A7ABB1}
+  .rule{position:absolute;left:50%;top:410px;transform:translateX(-50%);
+    width:64px;height:1px;background:rgba(242,241,237,.35)}
+  .corner{position:absolute;font-family:'IBM Plex Mono',monospace;font-size:13px;
+    letter-spacing:.22em;color:#7E8288}
+  .tl{left:64px;top:56px}.tr{right:64px;top:56px;text-align:right}
+  .bl{left:64px;bottom:52px}.br{right:64px;bottom:52px;text-align:right}
+</style>
+</head>
+<body>
+  <!-- faint East London linework, echoing the site's map scene -->
+  <svg class="map" viewBox="0 0 1200 630" fill="none">
+    <g stroke="rgba(242,241,237,.10)" stroke-width="1.1">
+      <path d="M-20 258 C 240 236, 470 262, 700 240 S 1120 210, 1240 228"/>
+      <path d="M-20 420 C 260 402, 520 438, 820 408 S 1140 380, 1240 396"/>
+      <path d="M370 -20 C 358 140, 384 330, 356 650"/>
+      <path d="M760 -20 C 786 180, 748 420, 776 650"/>
+      <path d="M-20 120 L 520 176 L 1240 118"/>
+      <path d="M120 650 L 420 380 L 560 300"/>
+      <path d="M1080 650 L 860 400 L 700 322"/>
+    </g>
+    <g stroke="rgba(242,241,237,.16)" stroke-width="1.1">
+      <path d="M212 156 h14 M219 149 v14"/>
+      <path d="M986 178 h14 M993 171 v14"/>
+      <path d="M170 494 h14 M177 487 v14"/>
+      <path d="M1006 476 h14 M1013 469 v14"/>
+    </g>
+    <g stroke="rgba(242,241,237,.07)" stroke-width="1" stroke-dasharray="2 8">
+      <path d="M-20 540 C 300 512, 700 556, 1240 520"/>
+    </g>
+  </svg>
+  <div class="corner tl">&Emacr;ASTMANS DEVELOPMENTS</div>
+  <div class="corner tr">LONDON / UNITED KINGDOM</div>
+  <div class="corner bl">51.5860&deg; N / 0.0196&deg; W</div>
+  <div class="corner br">EASTMANS.LONDON</div>
+  <svg class="lock" viewBox="0 0 1180 220" fill="none">
+    <g>
+      <path d="M20 40 H1160" stroke="rgba(242,241,237,0.12)" stroke-width="1"/>
+      <path d="M20 90 H1160" stroke="rgba(242,241,237,0.09)" stroke-width="1"/>
+      <path d="M20 140 H1160" stroke="rgba(242,241,237,0.12)" stroke-width="1"/>
+      <path d="M40 12 V168" stroke="rgba(242,241,237,0.1)" stroke-width="1"/>
+      <path d="M233 12 V168" stroke="rgba(242,241,237,0.1)" stroke-width="1"/>
+      <path d="M511 12 V168" stroke="rgba(242,241,237,0.1)" stroke-width="1"/>
+      <path d="M799 12 V168" stroke="rgba(242,241,237,0.1)" stroke-width="1"/>
+      <path d="M947 12 V168" stroke="rgba(242,241,237,0.1)" stroke-width="1"/>
+      <path d="M1140 12 V168" stroke="rgba(242,241,237,0.1)" stroke-width="1"/>
+    </g>
+    <g stroke-width="3">
+      <path d="M285 40 L233 40 L233 140 L285 140 M233 90 L273 90" stroke="#F2F1ED"/>
+      <path d="M235 16 L283 16" stroke="#F2F1ED"/>
+      <path d="M325 140 L353 40 L381 140 M336 100 L370 100" stroke="#F2F1ED"/>
+      <path d="M469 52 C463 40 431 38 425 56 C420 71 433 83 445 88 C457 93 471 104 466 120 C461 136 429 140 421 126" stroke="#F2F1ED"/>
+      <path d="M511 40 L567 40 M539 40 L539 140" stroke="#F2F1ED"/>
+      <path d="M607 140 L607 40 L635 96 L663 40 L663 140" stroke="#F2F1ED"/>
+      <path d="M703 140 L731 40 M714 100 L748 100" stroke="#F2F1ED"/>
+      <path d="M731 40 L759 140" stroke="#A7ABB1"/>
+      <path d="M799 140 L799 40 L857 140 L857 40" stroke="#F2F1ED"/>
+      <path d="M945 52 C939 40 907 38 901 56 C896 71 909 83 921 88 C933 93 947 104 942 120 C937 136 905 140 897 126" stroke="#F2F1ED"/>
+    </g>
+    <text x="590" y="196" text-anchor="middle" style="font-family:'Instrument Sans',sans-serif;font-size:23px;font-weight:500;letter-spacing:0.58em;fill:#A7ABB1">DEVELOPMENTS</text>
+  </svg>
+  <div class="rule"></div>
+  <div class="strap">LONDON PROPERTY DEVELOPMENT</div>
+</body>
+</html>
