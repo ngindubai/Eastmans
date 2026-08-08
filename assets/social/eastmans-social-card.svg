@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Ēastmans Developments</title>
+  <desc id="desc">Planning-led property development. London-wide, with particular expertise in East London.</desc>
+  <rect width="1200" height="630" fill="#050505"/>
+  <g fill="none" stroke="#a7abb1" stroke-opacity=".22" stroke-width="1">
+    <path d="M62 80H1138M62 315H1138M62 550H1138"/>
+    <path d="M170 48V582M600 48V582M1030 48V582"/>
+    <path d="M792 135h246v302H792zM835 198h160v239M835 266h160M835 334h160"/>
+    <path d="M746 437h340M770 469h292"/>
+  </g>
+  <g fill="none" stroke="#f2f1ed" stroke-width="6" transform="translate(86 86)">
+    <path d="M12 0h154M170 50H10v220h160M10 135h112"/>
+  </g>
+  <text x="86" y="432" fill="#f2f1ed" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="600" letter-spacing="16">ĒASTMANS</text>
+  <text x="90" y="482" fill="#a7abb1" font-family="monospace" font-size="17" letter-spacing="11">DEVELOPMENTS</text>
+  <text x="690" y="485" fill="#f2f1ed" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="400">Planning-led property development</text>
+  <text x="692" y="524" fill="#a7abb1" font-family="monospace" font-size="13" letter-spacing="3">LONDON-WIDE / EAST LONDON SPECIALISTS</text>
+</svg>

@@ -1,562 +1,200 @@
 <!DOCTYPE html>
-<html lang="en-GB" class="nojs">
+<html lang="en-GB" class="no-js">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Team | Ēastmans Developments</title>
-<meta name="description" content="The founders of Ēastmans Developments and the team around them: how schemes are appraised, delivered and overseen across London's existing buildings.">
-<link rel="canonical" href="https://eastmans.london/team.html">
-<meta name="theme-color" content="#F2F1ED">
-<meta property="og:title" content="The Team | Ēastmans Developments">
-<meta property="og:description" content="The founders of Ēastmans Developments and the team around them: how schemes are appraised, delivered and overseen.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://eastmans.london/team.html">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20fill='%23050505'/%3E%3Cpath%20d='M10.5%205H21.5M22%209.5H10v17.5h12M10%2018h7.5'%20fill='none'%20stroke='%23F2F1ED'%20stroke-width='1.6'/%3E%3C/svg%3E">
-<link rel="preload" href="/assets/fonts/instrument-sans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<style>
-@font-face{font-family:'Instrument Sans';src:url(/assets/fonts/instrument-sans-var-latin.woff2) format('woff2');font-weight:400 700;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+2000-206F}
-@font-face{font-family:'Instrument Sans';src:url(/assets/fonts/instrument-sans-var-latin-ext.woff2) format('woff2');font-weight:400 700;font-style:normal;font-display:swap;unicode-range:U+0100-024F,U+2010-2027}
-@font-face{font-family:'IBM Plex Mono';src:url(/assets/fonts/plex-mono-400-latin.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+2000-206F}
-@font-face{font-family:'IBM Plex Mono';src:url(/assets/fonts/plex-mono-400-latin-ext.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0100-024F,U+2010-2027}
-@font-face{font-family:'IBM Plex Mono';src:url(/assets/fonts/plex-mono-500-latin.woff2) format('woff2');font-weight:500;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+2000-206F}
-
-/* ---- ground ---------------------------------------------------------- */
-*{margin:0;padding:0;box-sizing:border-box}
-html{background:#F2F1ED;overflow-x:clip;scroll-behavior:auto}
-body{background:#F2F1ED;color:#050505;font-family:'Instrument Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
-  color-scheme:light;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip}
-::selection{background:#050505;color:#F2F1ED}
-.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
-a{color:#5F636A}
-
-/* ---- atmosphere ------------------------------------------------------ */
-#tm-cv{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.85}
-#tm-grain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:0}
-main,header.site,footer.site{position:relative;z-index:10}
-
-/* ---- header (matches the main page) ---------------------------------- */
-header.site{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:flex-start;
-  justify-content:space-between;padding:22px 26px}
-header.site .brand{display:inline-block;padding:6px;color:#050505;text-decoration:none;text-align:left}
-header.site .brand b{display:block;font-weight:600;font-size:13px;letter-spacing:.42em}
-header.site .brand i{display:block;font-style:normal;font-family:'IBM Plex Mono',ui-monospace,monospace;
-  font-size:8px;letter-spacing:.52em;color:#5F636A;margin-top:4px}
-header.site nav{display:flex;gap:8px}
-header.site nav a{display:inline-flex;align-items:center;padding:10px 12px;color:#050505;text-decoration:none;
-  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.26em;transition:color .3s}
-header.site nav a:hover{color:#5F636A}
-header.site nav a:focus-visible{outline:1px solid #5F636A;outline-offset:2px}
-header.site nav a[aria-current]{color:#5F636A}
-
-/* ---- shared section grammar ------------------------------------------ */
-section{position:relative}
-.pad{padding:16svh 7vw}
-.lab{display:flex;align-items:center;gap:14px;margin-bottom:24px}
-.lab i{display:block;width:44px;height:1px;background:rgba(5,5,5,.3)}
-.lab span{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.26em;
-  text-transform:uppercase;color:#5F636A}
-h1,h2{font-weight:500;letter-spacing:-.01em;color:#050505}
-h2{font-size:clamp(30px,4.4vw,64px);line-height:1.06;margin-bottom:26px}
-p.body{max-width:46ch;font-size:clamp(16px,1.15vw,17px);line-height:1.75;color:#5F636A}
-p.body+p.body{margin-top:14px}
-
-/* reveal masks: identical motion grammar to the main page */
-.rvm{display:block;overflow:hidden;padding-bottom:4px}
-.rv{display:block}
-html:not(.nojs) .rv{transform:translateY(115%)}
-html:not(.nojs) .rv.on{transform:translateY(0);transition:transform 1.1s cubic-bezier(.16,1,.3,1)}
-html:not(.nojs) .fd{opacity:0;transform:translateY(14px)}
-html:not(.nojs) .fd.on{opacity:1;transform:none;transition:opacity 1s ease,transform 1s cubic-bezier(.16,1,.3,1)}
-
-/* ---- figures: every photograph in black and white -------------------- */
-figure{position:relative;overflow:hidden;background:#E9E8E4}
-figure img{display:block;width:100%;height:auto;filter:grayscale(1) contrast(1.04);will-change:transform}
-html:not(.nojs) figure img{transform:scale(1.07);opacity:0}
-html:not(.nojs) figure.on img{transform:scale(1);opacity:1;
-  transition:transform 1.6s cubic-bezier(.22,.8,.24,1),opacity 1s ease}
-figure::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg,rgba(242,241,237,.14),rgba(242,241,237,0) 22%,rgba(242,241,237,0) 78%,rgba(242,241,237,.2))}
-figcaption{display:flex;justify-content:space-between;gap:14px;padding:12px 2px 0;
-  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.2em;color:#5F636A;
-  text-transform:uppercase}
-figcaption em{font-style:normal;color:rgba(95,99,106,.8)}
-
-/* ---- hero ------------------------------------------------------------ */
-#s1{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
-  padding:0 7vw 12svh}
-#s1 h1{font-size:clamp(34px,6.2vw,92px);line-height:1.04}
-#s1 .sub{margin-top:26px;max-width:52ch;font-size:clamp(16px,1.25vw,19px);line-height:1.7;color:#5F636A}
-#s1 .meta{position:absolute;right:7vw;bottom:13svh;text-align:right;display:flex;flex-direction:column;gap:8px}
-#s1 .meta span{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.22em;
-  text-transform:uppercase}
-#s1 .meta .a{color:#050505}
-#s1 .meta .b{color:#5F636A}
-#tm-cue{position:absolute;left:50%;bottom:4.5svh;transform:translateX(-50%);width:1px;height:52px;
-  background:linear-gradient(rgba(5,5,5,0),rgba(5,5,5,.55))}
-
-/* ---- content layouts ------------------------------------------------- */
-.grid2{display:flex;flex-wrap:wrap;gap:40px 64px;align-items:flex-start}
-.grid2>.copy{flex:1 1 380px;min-width:min(300px,100%);max-width:560px}
-.grid2>.pic{flex:1.3 1 460px;min-width:min(300px,100%)}
-.founders{display:flex;flex-wrap:wrap;gap:26px 56px;margin-top:44px}
-.founders>div{flex:1 1 260px;max-width:400px;border-top:1px solid rgba(5,5,5,.18);padding-top:18px}
-.founders b{display:block;font-weight:500;font-size:clamp(20px,1.8vw,26px);letter-spacing:.01em}
-.founders span.role{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
-  letter-spacing:.24em;color:#5F636A;margin:8px 0 12px;text-transform:uppercase}
-.founders p{font-size:15px;line-height:1.7;color:#5F636A;max-width:38ch}
-.wide{padding:0 7vw}
-.wide figure{max-width:1400px;margin:0 auto}
-.duo{display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start;max-width:1400px;margin:0 auto}
-.duo>div{flex:1 1 380px;min-width:min(300px,100%)}
-.duo>div:last-child{margin-top:clamp(0px,6vw,110px)}
-.ann{position:absolute;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
-  letter-spacing:.2em;color:#5F636A;text-transform:uppercase}
-.ann b{display:block;font-weight:400;color:#050505}
-
-/* ---- principles list ------------------------------------------------- */
-.plist{margin-top:34px;display:flex;flex-direction:column;gap:16px;max-width:620px}
-.plist>div{display:flex;align-items:flex-start;gap:14px}
-.plist i{display:block;width:40px;height:1px;background:rgba(5,5,5,.4);margin-top:9px;flex:none}
-.plist b{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:500;font-size:11px;
-  letter-spacing:.22em;color:#050505;text-transform:uppercase}
-.plist span{display:block;font-size:14.5px;line-height:1.65;color:#5F636A;margin-top:5px;max-width:52ch}
-
-/* ---- closing --------------------------------------------------------- */
-#s7 .in{min-height:70svh;display:flex;flex-direction:column;justify-content:center}
-#s7 h2{font-size:clamp(32px,5vw,72px)}
-.ctas{display:flex;flex-wrap:wrap;gap:14px 18px;align-items:center;margin-top:36px}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 30px;
-  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.24em;text-decoration:none;
-  text-transform:uppercase;transition:background .35s,color .35s,border-color .35s}
-.btn-p{color:#050505;border:1px solid rgba(5,5,5,.45)}
-.btn-p:hover{background:#050505;color:#F2F1ED;border-color:#050505}
-.btn-s{color:#5F636A;border-bottom:1px solid rgba(95,99,106,.45);min-height:44px;padding:0 2px}
-.btn-s:hover{color:#050505;border-bottom-color:#050505}
-.btn:focus-visible{outline:1px solid #5F636A;outline-offset:4px}
-
-footer.site{border-top:1px solid rgba(5,5,5,.14);margin:10svh 7vw 0;padding:30px 0 40px}
-footer.site .row{display:flex;flex-wrap:wrap;gap:16px 44px;justify-content:space-between;align-items:flex-start}
-footer.site .b1{display:block;font-weight:600;font-size:12px;letter-spacing:.34em}
-footer.site .b2{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
-  letter-spacing:.18em;color:#5F636A;margin-top:9px}
-footer.site nav{display:flex;flex-direction:column;gap:9px}
-footer.site nav a{display:inline-flex;align-items:center;min-height:44px;
-  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.18em;
-  color:#5F636A;text-decoration:underline;text-underline-offset:3px}
-footer.site nav a:hover{color:#050505}
-footer.site .legal{margin-top:26px;max-width:74ch;font-size:12.5px;line-height:1.75;color:rgba(95,99,106,.85)}
-footer.site .cr{margin-top:18px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
-  letter-spacing:.2em;color:#5F636A}
-
-/* ---- chapter indicator + rail ---------------------------------------- */
-#tm-ch{position:fixed;left:26px;bottom:22px;z-index:40;display:flex;gap:9px;align-items:baseline;
-  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.2em;color:#050505}
-#tm-ch .dim{color:#5F636A}
-#tm-rail{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:40;width:1px;height:34svh;
-  background:rgba(5,5,5,.14)}
-#tm-pd{position:absolute;left:-1.5px;top:0;width:4px;height:4px;background:#050505}
-
-/* ---- cursor dot (fine pointers, like the main page) ------------------ */
-#tm-cd{position:fixed;left:0;top:0;z-index:100;width:4px;height:4px;background:#050505;
-  pointer-events:none;display:none}
-
-/* ---- mobile art direction -------------------------------------------- */
-@media (max-width:759px){
-  header.site{padding:16px 16px}
-  header.site nav a{padding:10px 8px;letter-spacing:.2em}
-  header.site .brand i{letter-spacing:.3em}
-  .pad{padding:13svh 7vw}
-  #s1{padding-bottom:16svh}
-  #s1 .meta{display:none}
-  #tm-ch{left:16px;bottom:16px}
-  #tm-rail{display:none}
-  #tm-cv{opacity:.5}
-  p.body{font-size:16px}
-  .duo>div:last-child{margin-top:0}
-  .ann{display:none}
-}
-@media (max-width:359px){
-  #s1 h1{font-size:30px}
-}
-
-/* ---- reduced motion / no-JS: everything readable, nothing hidden ----- */
-@media (prefers-reduced-motion:reduce){
-  #tm-cv,#tm-grain,#tm-cd{display:none!important}
-  html:not(.nojs) .rv,html:not(.nojs) .fd{transform:none;opacity:1;transition:none}
-  html:not(.nojs) figure img{transform:none;opacity:1;transition:none}
-}
-.nojs #tm-cv,.nojs #tm-grain,.nojs #tm-ch,.nojs #tm-rail{display:none}
-</style>
-<script>document.documentElement.classList.remove('nojs')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>The Team | Ēastmans Developments</title>
+  <meta name="description" content="Meet the founders and experienced team behind Ēastmans Developments, a hands-on planning-led property development business in London.">
+  <link rel="canonical" href="https://eastmans.london/team.html">
+  <meta name="theme-color" content="#f2f1ed">
+  <meta property="og:title" content="The Team | Ēastmans Developments">
+  <meta property="og:description" content="The people responsible for acquisitions, planning and delivery at Ēastmans Developments.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://eastmans.london/team.html">
+  <meta property="og:image" content="https://eastmans.london/assets/social/eastmans-social-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Team | Ēastmans Developments">
+  <meta name="twitter:description" content="The people responsible for acquisitions, planning and delivery at Ēastmans Developments.">
+  <meta name="twitter:image" content="https://eastmans.london/assets/social/eastmans-social-card.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20fill='%23050505'/%3E%3Cpath%20d='M10.5%205H21.5M22%209.5H10v17.5h12M10%2018h7.5'%20fill='none'%20stroke='%23F2F1ED'%20stroke-width='1.6'/%3E%3C/svg%3E">
+  <link rel="preload" href="/assets/fonts/instrument-sans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/editorial.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","name":"The Team","url":"https://eastmans.london/team.html","isPartOf":{"@type":"WebSite","name":"Ēastmans Developments","url":"https://eastmans.london/"},"about":{"@type":"Organization","name":"Ēastmans Developments","url":"https://eastmans.london/","areaServed":"London, United Kingdom"}}</script>
 </head>
 <body>
-
-<canvas id="tm-cv" aria-hidden="true"></canvas>
-<div id="tm-grain" aria-hidden="true"></div>
-
-<header class="site">
-  <a class="brand" href="/" aria-label="Ēastmans Developments, return to the main site">
-    <b>ĒASTMANS</b><i>DEVELOPMENTS</i>
-  </a>
-  <nav aria-label="Primary">
-    <a href="/team.html" aria-current="page">TEAM</a>
-    <a href="/">SITE</a>
-    <a href="/#sx-s7">CONTACT</a>
-  </nav>
-</header>
-
-<main id="main">
-
-<!-- 01 / The team --------------------------------------------------------->
-<section id="s1" data-ch="01" data-lab="The team" aria-labelledby="h-hero">
-  <p class="lab"><i></i><span>01 / The team</span></p>
-  <h1 id="h-hero">
-    <span class="rvm"><span class="rv">A business run</span></span>
-    <span class="rvm"><span class="rv">by its founders.</span></span>
-  </h1>
-  <p class="sub fd">Ēastmans is owned and led by the people who appraise its schemes, walk its
-    sites and answer to its investors. Nothing important is delegated beyond their reach, and
-    nothing is committed to that they have not examined themselves.</p>
-  <div class="meta fd">
-    <span class="a mono">Hands-on development management</span>
-    <span class="b mono">London-wide / East London specialists</span>
-  </div>
-  <div id="tm-cue" aria-hidden="true"></div>
-</section>
-
-<!-- 02 / Founders --------------------------------------------------------->
-<section class="pad" data-ch="02" data-lab="Founders" aria-labelledby="h-f">
-  <div class="grid2">
-    <div class="copy">
-      <p class="lab"><i></i><span>02 / Founders</span></p>
-      <h2 id="h-f">
-        <span class="rvm"><span class="rv">Close to the work,</span></span>
-        <span class="rvm"><span class="rv">close to the numbers.</span></span>
-      </h2>
-      <p class="body fd">Adnan and Kashan built Ēastmans around a straightforward working method.
-        Every scheme is appraised by the people who will deliver it, and every commitment is one
-        they expect to stand behind in person.</p>
-      <p class="body fd">Between them they cover the full life of a project, from acquisition and
-        planning strategy through design, construction and the eventual sale or letting. Investors
-        deal with them directly at every stage.</p>
-      <div class="founders">
-        <div class="fd">
-          <b>Adnan</b>
-          <span class="role">Founder</span>
-          <p>Shapes the strategy on each scheme and leads its commercial side, from acquisition
-            and appraisal to the planning position that underpins value.</p>
-        </div>
-        <div class="fd">
-          <b>Kashan</b>
-          <span class="role">Founder</span>
-          <p>Leads delivery. Programme, contractors and cost are managed at close range, with
-            the drawings checked against the building as work proceeds.</p>
-        </div>
-      </div>
-    </div>
-    <div class="pic">
-      <figure>
-        <img src="/assets/team/founders-office-1600w.jpg"
-             srcset="/assets/team/founders-office-800w.jpg 800w, /assets/team/founders-office-1600w.jpg 1600w"
-             sizes="(max-width:759px) 92vw, 54vw"
-             width="1536" height="1024" alt="Adnan and Kashan reviewing drawings together at the plan table in the Ēastmans office" fetchpriority="high">
-      </figure>
-      <figcaption class="mono fd">FIG. 01 / FOUNDERS / SCHEME REVIEW <em>APPRAISAL IN PROGRESS</em></figcaption>
-    </div>
-  </div>
-</section>
-
-<!-- 03 / On site ---------------------------------------------------------->
-<section class="pad" data-ch="03" data-lab="On site" aria-labelledby="h-s" style="padding-top:6svh">
-  <div style="max-width:640px;margin-bottom:7svh">
-    <p class="lab"><i></i><span>03 / On site</span></p>
-    <h2 id="h-s">
-      <span class="rvm"><span class="rv">Oversight happens</span></span>
-      <span class="rvm"><span class="rv">on site.</span></span>
-    </h2>
-    <p class="body fd">The founders spend their time on site rather than behind a dashboard.
-      Work is checked against the drawings while it can still be changed cheaply, and problems
-      are dealt with while they are small.</p>
-  </div>
-  <div class="wide" style="padding:0;position:relative">
-    <figure>
-      <img src="/assets/team/founders-site-mono-1600w.jpg"
-           srcset="/assets/team/founders-site-mono-800w.jpg 800w, /assets/team/founders-site-mono-1600w.jpg 1600w"
-           sizes="(max-width:759px) 92vw, 86vw"
-           width="1536" height="1024" alt="The founders in hard hats and high-visibility waistcoats discussing work with the site manager inside a stripped-back period property" loading="lazy" decoding="async">
-    </figure>
-    <figcaption class="mono fd">FIG. 02 / ACTIVE REFURBISHMENT <em>WORK CHECKED AGAINST DRAWINGS</em></figcaption>
-    <span class="ann fd" style="right:2%;top:-30px;text-align:right"><b>+ EXISTING STRUCTURE / RETAINED</b>SURVEYED BEFORE WORK OPENS UP</span>
-  </div>
-  <div class="grid2" style="margin-top:7svh">
-    <div class="copy">
-      <p class="body fd">Most Ēastmans schemes involve existing buildings, which reward experience
-        and punish assumptions. Knowing what a Victorian terrace will accept, and what it will not,
-        is a large part of how risk is kept out of the programme.</p>
-    </div>
-    <div class="pic" style="max-width:640px">
-      <figure>
-        <img src="/assets/team/founders-site-1600w.jpg"
-             srcset="/assets/team/founders-site-800w.jpg 800w, /assets/team/founders-site-1600w.jpg 1600w"
-             sizes="(max-width:759px) 92vw, 44vw"
-             width="1536" height="1024" alt="The founders walking a stripped-back interior with the site manager, pointing out work overhead" loading="lazy" decoding="async">
-      </figure>
-      <figcaption class="mono fd">FIG. 03 / SITE WALK-THROUGH <em>FOUNDERS / SITE MANAGER</em></figcaption>
-    </div>
-  </div>
-</section>
-
-<!-- 04 / Technical control ------------------------------------------------>
-<section class="pad" data-ch="04" data-lab="Technical control" aria-labelledby="h-t" style="padding-top:6svh">
-  <div class="grid2">
-    <div class="pic" style="position:relative">
-      <figure>
-        <img src="/assets/team/basement-1600w.jpg"
-             srcset="/assets/team/basement-800w.jpg 800w, /assets/team/basement-1600w.jpg 1600w"
-             sizes="(max-width:759px) 92vw, 54vw"
-             width="1536" height="1024" alt="A basement excavation beneath a retained house, with temporary works and the team reviewing a drawing from a safe platform" loading="lazy" decoding="async">
-      </figure>
-      <figcaption class="mono fd">FIG. 04 / BASEMENT / TEMPORARY WORKS <em>SEQUENCED STRUCTURAL WORK</em></figcaption>
-    </div>
-    <div class="copy">
-      <p class="lab"><i></i><span>04 / Technical control</span></p>
-      <h2 id="h-t">
-        <span class="rvm"><span class="rv">Complex work,</span></span>
-        <span class="rvm"><span class="rv">properly sequenced.</span></span>
-      </h2>
-      <p class="body fd">Structural alterations and basement work carry the highest stakes in
-        residential development. Ēastmans takes them on with method. Engineers are appointed early,
-        temporary works are designed before anything is opened up, and the agreed sequence is one
-        the whole team can hold to.</p>
-      <div class="plist">
-        <div class="fd"><i></i><span><b>01 Appraisal</b><span>Cost, programme and method are tested before purchase. Schemes that fail the test are left alone.</span></span></div>
-        <div class="fd"><i></i><span><b>02 Sequence</b><span>Temporary works and structural stages are agreed with the engineers before work opens up.</span></span></div>
-        <div class="fd"><i></i><span><b>03 Control</b><span>Progress is measured against the drawings and the programme, week by week.</span></span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 05 / The wider team --------------------------------------------------->
-<section class="pad" data-ch="05" data-lab="The wider team" aria-labelledby="h-w" style="padding-top:6svh">
-  <div style="max-width:640px;margin-bottom:7svh">
-    <p class="lab"><i></i><span>05 / The wider team</span></p>
-    <h2 id="h-w">
-      <span class="rvm"><span class="rv">Known teams,</span></span>
-      <span class="rvm"><span class="rv">repeat work.</span></span>
-    </h2>
-    <p class="body fd">The contractors and consultants around Ēastmans are long-standing
-      relationships rather than lowest bids. Trades are chosen for how they treat existing
-      buildings, and the professional team is coordinated by people who understand the drawings
-      they are issuing.</p>
-  </div>
-  <div class="duo">
-    <div>
-      <figure>
-        <img src="/assets/team/contractors-1600w.jpg"
-             srcset="/assets/team/contractors-800w.jpg 800w, /assets/team/contractors-1600w.jpg 1600w"
-             sizes="(max-width:759px) 92vw, 43vw"
-             width="1536" height="1024" alt="A contractor carrying out careful work inside a period property, original doors and brickwork visible" loading="lazy" decoding="async">
-      </figure>
-      <figcaption class="mono fd">FIG. 05 / CARPENTRY / FIRST FIX <em>ORIGINAL FABRIC RETAINED</em></figcaption>
-    </div>
-    <div>
-      <figure>
-        <img src="/assets/team/machinery-1600w.jpg"
-             srcset="/assets/team/machinery-800w.jpg 800w, /assets/team/machinery-1600w.jpg 1600w"
-             sizes="(max-width:759px) 92vw, 43vw"
-             width="1536" height="1024" alt="An operator working a compact excavator at residential scale, with the retained period house behind" loading="lazy" decoding="async">
-      </figure>
-      <figcaption class="mono fd">FIG. 06 / GROUNDWORKS <em>COMPACT PLANT / RESIDENTIAL SCALE</em></figcaption>
-    </div>
-  </div>
-</section>
-
-<!-- 06 / The result ------------------------------------------------------->
-<section class="pad" data-ch="06" data-lab="The result" aria-labelledby="h-r" style="padding-top:6svh">
-  <div class="wide" style="padding:0;position:relative">
-    <figure>
-      <img src="/assets/team/completed-1600w.jpg"
-           srcset="/assets/team/completed-800w.jpg 800w, /assets/team/completed-1600w.jpg 1600w"
-           sizes="(max-width:759px) 92vw, 86vw"
-           width="1536" height="1024" alt="A completed period property, restored brick and windows, the founders walking away in conversation" loading="lazy" decoding="async">
-    </figure>
-    <figcaption class="mono fd">FIG. 07 / COMPLETED SCHEME <em>RETAINED CHARACTER</em></figcaption>
-  </div>
-  <div style="max-width:640px;margin-top:7svh">
-    <p class="lab"><i></i><span>06 / The result</span></p>
-    <h2 id="h-r">
-      <span class="rvm"><span class="rv">The building is</span></span>
-      <span class="rvm"><span class="rv">the evidence.</span></span>
-    </h2>
-    <p class="body fd">A finished Ēastmans scheme keeps what gave the property its character and
-      adds what it lacked. That standard is commercial as much as aesthetic. Well-finished period
-      buildings let and sell on their own merits, and they keep doing so.</p>
-  </div>
-</section>
-
-<!-- 07 / Introduction ----------------------------------------------------->
-<section class="pad" data-ch="07" data-lab="Introduction" aria-labelledby="h-c">
-  <div class="in" style="max-width:820px">
-    <p class="lab"><i></i><span>07 / Introduction</span></p>
-    <h2 id="h-c">
-      <span class="rvm"><span class="rv">Meet the people</span></span>
-      <span class="rvm"><span class="rv">behind the plan.</span></span>
-    </h2>
-    <p class="body fd">To discuss a scheme, our approach, or how we work with private investors,
-      start with a private introduction. You will deal with the founders from the first
-      conversation onward.</p>
-    <div class="ctas fd">
-      <a class="btn btn-p" href="/#sx-s7">REQUEST A PRIVATE INTRODUCTION</a>
-      <a class="btn btn-s" href="/">EXPLORE ĒASTMANS</a>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<footer class="site">
-  <div class="row">
-    <div>
-      <span class="b1">ĒASTMANS DEVELOPMENTS</span>
-      <span class="b2">PROPERTY DEVELOPMENT AND PRIVATE INVESTMENT / LONDON</span>
-    </div>
-    <nav aria-label="Footer">
-      <a href="/">Return to the main site</a>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Ēastmans Developments, home"><strong>ĒASTMANS</strong><span>DEVELOPMENTS</span></a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/team.html" aria-current="page">Team</a>
+      <a href="/projects.html">Projects</a>
+      <a href="/#sx-s7">Contact</a>
     </nav>
-  </div>
-  <p class="legal">Information presented on this website is provided for general introductory purposes
-    only. It does not constitute investment, financial, legal or tax advice, or an offer or
-    recommendation to invest.</p>
-  <p class="cr">© 2026 ĒASTMANS DEVELOPMENTS. ALL RIGHTS RESERVED.</p>
-</footer>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-navigation">Menu</button>
+  </header>
+  <nav class="mobile-nav" id="mobile-navigation" aria-label="Mobile navigation" hidden>
+    <a href="/"><span>01</span>Home</a>
+    <a href="/team.html" aria-current="page"><span>02</span>Team</a>
+    <a href="/projects.html"><span>03</span>Projects</a>
+    <a href="/#sx-s7"><span>04</span>Contact</a>
+  </nav>
 
-<div id="tm-ch" aria-hidden="true"><span id="tm-chn">01</span><span class="dim">/ 07</span><span id="tm-chl" class="dim">THE TEAM</span></div>
-<div id="tm-rail" aria-hidden="true"><div id="tm-pd"></div></div>
-<div id="tm-cd" aria-hidden="true"></div>
+  <main class="page" id="main">
+    <section class="hero">
+      <div class="shell hero-inner">
+        <div>
+          <p class="eyebrow">The team</p>
+          <h1>The people behind the work.</h1>
+        </div>
+        <p class="hero-copy">A hands-on development business led by the people responsible for its acquisitions, planning and delivery.</p>
+      </div>
+    </section>
 
-<script>
-(function () {
-  'use strict';
-  var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    <section class="section" aria-labelledby="founders-title">
+      <div class="shell">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">01 / Co-founders</p>
+          <div>
+            <h2 id="founders-title">Founder oversight at every stage.</h2>
+            <p class="section-intro">Adnan and Kashan bring complementary commercial and delivery experience to each project. Together they maintain a clear line of responsibility from the first appraisal to the final handover.</p>
+          </div>
+        </header>
 
-  /* ---- reveals: the main page's masked-line grammar -------------------- */
-  var io = new IntersectionObserver(function (es) {
-    es.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      var el = e.target;
-      if (el.tagName === 'FIGURE' || el.classList.contains('fd')) el.classList.add('on');
-      el.querySelectorAll('.rv').forEach(function (r, i) {
-        setTimeout(function () { r.classList.add('on'); }, RM ? 0 : i * 110);
-      });
-      io.unobserve(el);
-    });
-  }, { rootMargin: '0px 0px -12% 0px' });
-  document.querySelectorAll('h1, h2, .fd, figure').forEach(function (el) { io.observe(el); });
+        <div class="founder-grid">
+          <article class="founder-card" data-reveal>
+            <figure>
+              <img src="/assets/founders/adnan-640w.jpg" srcset="/assets/founders/adnan-640w.jpg 640w,/assets/founders/adnan-1000w.jpg 1000w" sizes="(max-width:759px) 100vw,50vw" width="1000" height="1563" alt="Adnan, co-founder of Ēastmans Developments" fetchpriority="high">
+            </figure>
+            <div class="founder-copy">
+              <header><h3>Adnan</h3><span class="role">Co-founder</span></header>
+              <div>
+                <p>Adnan leads acquisitions, commercial appraisal and investment strategy. His focus is on identifying the planning potential within existing buildings, testing each opportunity against realistic market evidence and defining a clear route to value before capital is committed.</p>
+                <ul class="responsibilities" aria-label="Adnan's areas of responsibility"><li>Acquisitions</li><li>Commercial appraisal</li><li>Investment strategy</li></ul>
+              </div>
+            </div>
+          </article>
 
-  /* ---- chapter indicator + progress rail ------------------------------ */
-  var chn = document.getElementById('tm-chn'), chl = document.getElementById('tm-chl');
-  var sio = new IntersectionObserver(function (es) {
-    es.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      chn.textContent = e.target.getAttribute('data-ch');
-      chl.textContent = e.target.getAttribute('data-lab').toUpperCase();
-    });
-  }, { rootMargin: '-45% 0px -45% 0px' });
-  document.querySelectorAll('section[data-ch]').forEach(function (s) { sio.observe(s); });
+          <article class="founder-card" data-reveal>
+            <figure>
+              <img src="/assets/founders/kashan-640w.jpg" srcset="/assets/founders/kashan-640w.jpg 640w,/assets/founders/kashan-1000w.jpg 972w" sizes="(max-width:759px) 100vw,50vw" width="972" height="1619" alt="Kashan, co-founder of Ēastmans Developments" fetchpriority="high">
+            </figure>
+            <div class="founder-copy">
+              <header><h3>Kashan</h3><span class="role">Co-founder</span></header>
+              <div>
+                <p>Kashan leads construction delivery, programme and cost control. He coordinates the practical decisions that move a scheme from design into construction, working closely with consultants and contractors to maintain quality, manage risk and keep the commercial objective in view.</p>
+                <ul class="responsibilities" aria-label="Kashan's areas of responsibility"><li>Construction delivery</li><li>Programme</li><li>Cost control</li></ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  var pd = document.getElementById('tm-pd'), rail = document.getElementById('tm-rail');
-  var docH = 1, railH = 1;
-  function measure() {
-    docH = Math.max(1, document.documentElement.scrollHeight - innerHeight);
-    railH = rail ? rail.offsetHeight : 1;
-  }
-  measure();
-  addEventListener('resize', measure);
+    <section class="section" aria-labelledby="company-title">
+      <div class="shell company-grid">
+        <figure class="company-image" data-reveal>
+          <img src="/assets/team/founders-office-800w.jpg" srcset="/assets/team/founders-office-800w.jpg 800w,/assets/team/founders-office-1600w.jpg 1600w" sizes="(max-width:980px) 100vw,60vw" width="1537" height="1023" alt="The co-founders of Ēastmans Developments together in their office" loading="lazy">
+        </figure>
+        <div class="company-copy" data-reveal>
+          <p class="eyebrow">02 / Company profile</p>
+          <h2 id="company-title">One dedicated development business.</h2>
+          <p>Ēastmans brings together 50 years of combined property experience and a track record representing £750 million in total development value. The business focuses on planning-led opportunities within London’s existing building stock, with particular expertise across East London.</p>
+          <p>A long-established sourcing network, disciplined commercial appraisal and hands-on management support every scheme. Ēastmans operates as a focused development company with the benefit of relationships built through a wider property group.</p>
+          <div class="stats" role="group" aria-label="Company experience">
+            <div class="stat"><strong>50</strong><span>Years of combined property experience</span></div>
+            <div class="stat"><strong>£750m</strong><span>Total development value</span></div>
+            <div class="stat"><strong>London</strong><span>London-wide activity</span></div>
+            <div class="stat"><strong>East</strong><span>Particular East London expertise</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  /* ---- atmosphere canvas: the site's drafting grid, drifting ----------- */
-  var cv = document.getElementById('tm-cv'), cx = cv.getContext('2d');
-  var vw = 0, vh = 0, dpr = 1, idle = 0, lastY = -1, raf = null;
-  var CROSSES = [[.16,.22],[.84,.18],[.10,.66],[.90,.72],[.5,.42],[.28,.88]];
-  function size() {
-    vw = innerWidth; vh = innerHeight;
-    dpr = Math.min(devicePixelRatio || 1, vw < 760 ? 1 : 1.5);
-    cv.width = Math.round(vw * dpr); cv.height = Math.round(vh * dpr);
-    cv.style.width = vw + 'px'; cv.style.height = vh + 'px';
-    idle = 0;
-  }
-  function line(x1, y1, x2, y2, a) {
-    cx.strokeStyle = 'rgba(5,5,5,' + a + ')';
-    cx.beginPath(); cx.moveTo(x1, y1); cx.lineTo(x2, y2); cx.stroke();
-  }
-  function draw() {
-    var y = scrollY, d = y * 0.06 % (vh * 2);
-    cx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    cx.clearRect(0, 0, vw, vh);
-    cx.lineWidth = 1;
-    for (var i = -1; i < 4; i++) {
-      var gy = ((i * vh * 0.5 - d) % (vh * 2) + vh * 2) % (vh * 2) - vh * 0.5;
-      line(0, gy, vw, gy, 0.045);
-    }
-    line(vw * .07, 0, vw * .07, vh, 0.05);
-    line(vw * .93, 0, vw * .93, vh, 0.05);
-    var p = y / docH;
-    CROSSES.forEach(function (c, i) {
-      var cyy = (c[1] * vh - d * (0.4 + i * 0.12)) % vh;
-      if (cyy < 0) cyy += vh;
-      var a = 0.10 + 0.05 * Math.sin(p * 6 + i);
-      line(c[0] * vw - 6, cyy, c[0] * vw + 6, cyy, a);
-      line(c[0] * vw, cyy - 6, c[0] * vw, cyy + 6, a);
-    });
-  }
-  function tick() {
-    raf = requestAnimationFrame(tick);
-    var y = scrollY;
-    if (y === lastY) { if (++idle > 8) { cancelAnimationFrame(raf); raf = null; } }
-    else {
-      idle = 0; lastY = y;
-      draw();
-      if (pd) pd.style.top = (Math.min(1, y / docH) * (railH - 4)) + 'px';
-    }
-  }
-  function wake() { if (!raf && !RM && !document.hidden) { idle = 0; raf = requestAnimationFrame(tick); } }
-  if (!RM) {
-    size(); draw(); wake();
-    addEventListener('scroll', wake, { passive: true });
-    addEventListener('resize', function () { size(); draw(); });
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden && raf) { cancelAnimationFrame(raf); raf = null; } else wake();
-    });
-  }
+    <section class="section" aria-labelledby="team-title">
+      <div class="shell">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">03 / Experienced team</p>
+          <div>
+            <h2 id="team-title">Specialist experience around the founders.</h2>
+            <p class="section-intro">An experienced team supports the day-to-day control of operations, development, construction and planning. Clear ownership of each discipline keeps decisions informed and delivery coordinated.</p>
+          </div>
+        </header>
 
-  /* ---- grain (static texture, as on the main page) --------------------- */
-  if (!RM) {
-    var g = document.createElement('canvas'); g.width = g.height = 120;
-    var gx = g.getContext('2d'), id = gx.createImageData(120, 120);
-    for (var i = 0; i < id.data.length; i += 4) {
-      var v = Math.random() * 255 | 0;
-      id.data[i] = id.data[i + 1] = id.data[i + 2] = v; id.data[i + 3] = 255;
-    }
-    gx.putImageData(id, 0, 0);
-    var ge = document.getElementById('tm-grain');
-    ge.style.backgroundImage = 'url(' + g.toDataURL() + ')';
-    ge.style.backgroundSize = '120px 120px';
-    ge.style.mixBlendMode = 'multiply';
-    ge.style.opacity = 0.05;
-  }
+        <div class="staff-grid">
+          <article class="staff-card" data-reveal>
+            <figure><img src="/assets/team/staff/susan-dixon-600w.jpg" srcset="/assets/team/staff/susan-dixon-600w.jpg 600w,/assets/team/staff/susan-dixon-1000w.jpg 1000w" sizes="(max-width:759px) 100vw,50vw" width="1000" height="1250" alt="Representative interim portrait for Susan Dixon" loading="lazy"></figure>
+            <header><div><h3>Susan Dixon</h3><span class="role">Operations Manager</span></div></header>
+            <p>Susan coordinates day-to-day operations across the business, keeping information, appointments and project actions moving between founders, consultants and delivery teams. She maintains the practical rhythm behind each scheme, from early due diligence through live construction, and provides clear oversight of priorities, records and follow-ups so decisions are made with the right information at hand.</p>
+            <ul class="responsibilities" aria-label="Susan Dixon's responsibilities"><li>Business operations</li><li>Project coordination</li><li>Reporting and records</li></ul>
+            <span class="temporary">Representative interim portrait</span>
+          </article>
 
-  /* ---- cursor dot on fine pointers ------------------------------------- */
-  if (!RM && matchMedia('(pointer: fine)').matches) {
-    var cd = document.getElementById('tm-cd');
-    document.documentElement.style.cursor = 'none';
-    document.querySelectorAll('a').forEach(function (el) { el.style.cursor = 'none'; });
-    cd.style.display = 'block';
-    addEventListener('mousemove', function (e) {
-      cd.style.transform = 'translate(' + (e.clientX - 2) + 'px,' + (e.clientY - 2) + 'px)';
-    }, { passive: true });
-  }
-})();
-</script>
+          <article class="staff-card" data-reveal>
+            <figure><img src="/assets/team/staff/fawad-aslam-600w.jpg" srcset="/assets/team/staff/fawad-aslam-600w.jpg 600w,/assets/team/staff/fawad-aslam-1000w.jpg 1000w" sizes="(max-width:759px) 100vw,50vw" width="1000" height="1250" alt="Representative interim portrait for Fawad Aslam" loading="lazy"></figure>
+            <header><div><h3>Fawad Aslam</h3><span class="role">Development Manager</span></div></header>
+            <p>Fawad manages the detail between acquisition and construction, coordinating surveys, design information, consultant input and statutory requirements. He tracks the assumptions established at appraisal, challenges emerging risks and keeps the project team aligned around an achievable programme. His role helps translate the development strategy into a clear, coordinated package ready for delivery.</p>
+            <ul class="responsibilities" aria-label="Fawad Aslam's responsibilities"><li>Design coordination</li><li>Due diligence</li><li>Development programme</li></ul>
+            <span class="temporary">Representative interim portrait</span>
+          </article>
+
+          <article class="staff-card" data-reveal>
+            <figure><img src="/assets/team/staff/mike-smith-600w.jpg" srcset="/assets/team/staff/mike-smith-600w.jpg 600w,/assets/team/staff/mike-smith-1000w.jpg 1000w" sizes="(max-width:759px) 100vw,50vw" width="1000" height="1250" alt="Representative interim portrait for Mike Smith" loading="lazy"></figure>
+            <header><div><h3>Mike Smith</h3><span class="role">Construction Manager</span></div></header>
+            <p>Mike oversees activity on live refurbishment sites, coordinating contractors, sequencing and quality control against the agreed scope. He monitors progress, identifies practical issues early and maintains a disciplined record of site decisions. Working closely with the founders and professional team, he helps protect programme, workmanship and cost throughout construction.</p>
+            <ul class="responsibilities" aria-label="Mike Smith's responsibilities"><li>Site coordination</li><li>Quality control</li><li>Construction programme</li></ul>
+            <span class="temporary">Placeholder identity and interim portrait</span>
+          </article>
+
+          <article class="staff-card" data-reveal>
+            <figure><img src="/assets/team/staff/steve-jones-600w.jpg" srcset="/assets/team/staff/steve-jones-600w.jpg 600w,/assets/team/staff/steve-jones-1000w.jpg 1000w" sizes="(max-width:759px) 100vw,50vw" width="1000" height="1250" alt="Representative interim portrait for Steve Jones" loading="lazy"></figure>
+            <header><div><h3>Steve Jones</h3><span class="role">Planning Consultant</span></div></header>
+            <p>Steve advises on planning strategy, policy and the presentation of development proposals. He reviews the constraints and opportunities around existing buildings, supports early engagement and coordinates the material needed for well-founded applications. His input helps ensure that design ambition, local context and commercial viability are considered together from the outset.</p>
+            <ul class="responsibilities" aria-label="Steve Jones's responsibilities"><li>Planning strategy</li><li>Policy review</li><li>Applications</li></ul>
+            <span class="temporary">Placeholder identity and interim portrait</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="carousel-section" aria-labelledby="site-title">
+      <div class="shell" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Site photographs">
+        <header class="carousel-head">
+          <div><p class="eyebrow">04 / On site</p><h2 id="site-title">The work in progress.</h2></div>
+          <div class="carousel-controls"><button class="carousel-button" data-prev type="button" aria-label="Previous site photograph">←</button><span class="carousel-count" data-count aria-live="polite">01 / 06</span><button class="carousel-button" data-next type="button" aria-label="Next site photograph">→</button></div>
+        </header>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="carousel-slide"><figure class="carousel-figure"><img src="/assets/team/founders-site-mono-800w.jpg" srcset="/assets/team/founders-site-mono-800w.jpg 800w,/assets/team/founders-site-mono-1600w.jpg 1600w" sizes="100vw" width="1536" height="1024" alt="Founders reviewing work during an active refurbishment" loading="lazy"></figure><div class="carousel-caption"><span>Founders on site</span><span>Active refurbishment / East London</span></div></div>
+            <div class="carousel-slide"><figure class="carousel-figure"><img src="/assets/team/founders-site-800w.jpg" srcset="/assets/team/founders-site-800w.jpg 800w,/assets/team/founders-site-1600w.jpg 1600w" sizes="100vw" width="1536" height="1024" alt="Site walkthrough during an East London refurbishment" loading="lazy"></figure><div class="carousel-caption"><span>Site walkthrough</span><span>Programme and quality review</span></div></div>
+            <div class="carousel-slide"><figure class="carousel-figure"><img src="/assets/team/basement-800w.jpg" srcset="/assets/team/basement-800w.jpg 800w,/assets/team/basement-1600w.jpg 1600w" sizes="100vw" width="1536" height="1024" alt="Basement excavation works in progress" loading="lazy"></figure><div class="carousel-caption"><span>Basement excavation</span><span>Structural works in progress</span></div></div>
+            <div class="carousel-slide"><figure class="carousel-figure"><img src="/assets/team/contractors-800w.jpg" srcset="/assets/team/contractors-800w.jpg 800w,/assets/team/contractors-1600w.jpg 1600w" sizes="100vw" width="1536" height="1024" alt="Contractors working inside a period property" loading="lazy"></figure><div class="carousel-caption"><span>Contractor coordination</span><span>Interior refurbishment</span></div></div>
+            <div class="carousel-slide"><figure class="carousel-figure"><img src="/assets/team/machinery-800w.jpg" srcset="/assets/team/machinery-800w.jpg 800w,/assets/team/machinery-1600w.jpg 1600w" sizes="100vw" width="1536" height="1024" alt="Compact excavator operating on a refurbishment site" loading="lazy"></figure><div class="carousel-caption"><span>Enabling works</span><span>Controlled site logistics</span></div></div>
+            <div class="carousel-slide"><figure class="carousel-figure"><img src="/assets/team/completed-800w.jpg" srcset="/assets/team/completed-800w.jpg 800w,/assets/team/completed-1600w.jpg 1600w" sizes="100vw" width="1536" height="1024" alt="Completed refurbished period property" loading="lazy"></figure><div class="carousel-caption"><span>Completed property</span><span>Period character retained</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="shell cta-grid">
+        <h2 id="cta-title">Work with the people behind the plan.</h2>
+        <div><p>For acquisitions, development opportunities or a private introduction to the business, speak directly with the team.</p><a class="button" href="/#sx-s7">Request a private introduction</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-top">
+        <div class="footer-brand"><strong>ĒASTMANS DEVELOPMENTS</strong><span>Planning-led property development / London-wide, with particular expertise in East London.</span></div>
+        <nav class="footer-nav" aria-label="Site links"><a href="/">Home</a><a href="/team.html">Team</a><a href="/projects.html">Projects</a><a href="/#sx-s7">Contact</a></nav>
+        <nav class="footer-nav" aria-label="Legal links"><a href="/privacy.html">Privacy policy</a><a href="/terms.html">Terms and conditions</a><a href="/company-information.html">Company information</a></nav>
+      </div>
+      <p class="footer-note">Information on this website is provided for general introductory purposes only. It does not constitute investment, financial, legal or tax advice, or an offer or recommendation to invest. Registered company details are marked for confirmation on the Company Information page before launch.</p>
+      <p class="copyright">© 2026 Ēastmans Developments. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="/assets/editorial.js" defer></script>
 </body>
 </html>
