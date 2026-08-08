@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en-GB" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Team | Ēastmans Developments</title>
+<meta name="description" content="The people behind Ēastmans Developments. Hands-on development management across London's existing buildings, with particular expertise in East London.">
+<link rel="canonical" href="https://eastmans.london/team.html">
+<meta name="theme-color" content="#050505">
+<meta property="og:title" content="The Team | Ēastmans Developments">
+<meta property="og:description" content="The people behind Ēastmans Developments. Hands-on development management across London's existing buildings.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://eastmans.london/team.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20fill='%23050505'/%3E%3Cpath%20d='M10.5%205H21.5M22%209.5H10v17.5h12M10%2018h7.5'%20fill='none'%20stroke='%23F2F1ED'%20stroke-width='1.6'/%3E%3C/svg%3E">
+<link rel="preload" href="/assets/fonts/instrument-sans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Instrument Sans';src:url(/assets/fonts/instrument-sans-var-latin.woff2) format('woff2');font-weight:400 700;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:'Instrument Sans';src:url(/assets/fonts/instrument-sans-var-latin-ext.woff2) format('woff2');font-weight:400 700;font-style:normal;font-display:swap;unicode-range:U+0100-024F,U+2010-2027}
+@font-face{font-family:'IBM Plex Mono';src:url(/assets/fonts/plex-mono-400-latin.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:'IBM Plex Mono';src:url(/assets/fonts/plex-mono-400-latin-ext.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0100-024F,U+2010-2027}
+@font-face{font-family:'IBM Plex Mono';src:url(/assets/fonts/plex-mono-500-latin.woff2) format('woff2');font-weight:500;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+2000-206F}
+
+/* ---- ground ---------------------------------------------------------- */
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#050505;overflow-x:clip;scroll-behavior:auto}
+body{background:#050505;color:#F2F1ED;font-family:'Instrument Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+  color-scheme:dark;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip}
+::selection{background:#F2F1ED;color:#050505}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+a{color:#A7ABB1}
+
+/* ---- atmosphere ------------------------------------------------------ */
+#tm-cv{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.85}
+#tm-grain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:0}
+main,header.site,footer.site{position:relative;z-index:10}
+
+/* ---- header (matches the main page) ---------------------------------- */
+header.site{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:flex-start;
+  justify-content:space-between;padding:22px 26px}
+header.site .brand{display:inline-block;padding:6px;color:#F2F1ED;text-decoration:none;text-align:left}
+header.site .brand b{display:block;font-weight:600;font-size:13px;letter-spacing:.42em}
+header.site .brand i{display:block;font-style:normal;font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:8px;letter-spacing:.52em;color:#A7ABB1;margin-top:4px}
+header.site nav{display:flex;gap:8px}
+header.site nav a{display:inline-flex;align-items:center;padding:10px 12px;color:#F2F1ED;text-decoration:none;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.26em;transition:color .3s}
+header.site nav a:hover{color:#A7ABB1}
+header.site nav a:focus-visible{outline:1px solid #A7ABB1;outline-offset:2px}
+header.site nav a[aria-current]{color:#A7ABB1}
+
+/* ---- shared section grammar ------------------------------------------ */
+section{position:relative}
+.pad{padding:16svh 7vw}
+.lab{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.lab i{display:block;width:44px;height:1px;background:rgba(242,241,237,.3)}
+.lab span{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.26em;
+  text-transform:uppercase;color:#A7ABB1}
+h1,h2{font-weight:500;letter-spacing:-.01em;color:#F2F1ED}
+h2{font-size:clamp(30px,4.4vw,64px);line-height:1.06;margin-bottom:26px}
+p.body{max-width:46ch;font-size:clamp(16px,1.15vw,17px);line-height:1.75;color:#A7ABB1}
+p.body+p.body{margin-top:14px}
+
+/* reveal masks: identical motion grammar to the main page */
+.rvm{display:block;overflow:hidden;padding-bottom:4px}
+.rv{display:block}
+html:not(.nojs) .rv{transform:translateY(115%)}
+html:not(.nojs) .rv.on{transform:translateY(0);transition:transform 1.1s cubic-bezier(.16,1,.3,1)}
+html:not(.nojs) .fd{opacity:0;transform:translateY(14px)}
+html:not(.nojs) .fd.on{opacity:1;transform:none;transition:opacity 1s ease,transform 1s cubic-bezier(.16,1,.3,1)}
+
+/* ---- figures: every photograph in black and white -------------------- */
+figure{position:relative;overflow:hidden;background:#0A0A0B}
+figure img{display:block;width:100%;height:auto;filter:grayscale(1) contrast(1.04);will-change:transform}
+html:not(.nojs) figure img{transform:scale(1.07);opacity:0}
+html:not(.nojs) figure.on img{transform:scale(1);opacity:1;
+  transition:transform 1.6s cubic-bezier(.22,.8,.24,1),opacity 1s ease}
+figure::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(5,5,5,.14),rgba(5,5,5,0) 22%,rgba(5,5,5,0) 78%,rgba(5,5,5,.2))}
+figcaption{display:flex;justify-content:space-between;gap:14px;padding:12px 2px 0;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.2em;color:#A7ABB1;
+  text-transform:uppercase}
+figcaption em{font-style:normal;color:rgba(167,171,177,.8)}
+
+/* ---- hero ------------------------------------------------------------ */
+#s1{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 7vw 12svh}
+#s1 h1{font-size:clamp(34px,6.2vw,92px);line-height:1.04}
+#s1 .sub{margin-top:26px;max-width:52ch;font-size:clamp(16px,1.25vw,19px);line-height:1.7;color:#A7ABB1}
+#s1 .meta{position:absolute;right:7vw;bottom:13svh;text-align:right;display:flex;flex-direction:column;gap:8px}
+#s1 .meta span{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase}
+#s1 .meta .a{color:#F2F1ED}
+#s1 .meta .b{color:#A7ABB1}
+#tm-cue{position:absolute;left:50%;bottom:4.5svh;transform:translateX(-50%);width:1px;height:52px;
+  background:linear-gradient(rgba(242,241,237,0),rgba(242,241,237,.55))}
+
+/* ---- content layouts ------------------------------------------------- */
+.grid2{display:flex;flex-wrap:wrap;gap:40px 64px;align-items:flex-start}
+.grid2>.copy{flex:1 1 380px;min-width:min(300px,100%);max-width:560px}
+.grid2>.pic{flex:1.3 1 460px;min-width:min(300px,100%)}
+.founders{display:flex;flex-wrap:wrap;gap:26px 56px;margin-top:44px}
+.founders>div{flex:1 1 260px;max-width:400px;border-top:1px solid rgba(242,241,237,.18);padding-top:18px}
+.founders b{display:block;font-weight:500;font-size:clamp(20px,1.8vw,26px);letter-spacing:.01em}
+.founders span.role{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+  letter-spacing:.24em;color:#A7ABB1;margin:8px 0 12px;text-transform:uppercase}
+.founders p{font-size:15px;line-height:1.7;color:#A7ABB1;max-width:38ch}
+.wide{padding:0 7vw}
+.wide figure{max-width:1400px;margin:0 auto}
+.duo{display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start;max-width:1400px;margin:0 auto}
+.duo>div{flex:1 1 380px;min-width:min(300px,100%)}
+.duo>div:last-child{margin-top:clamp(0px,6vw,110px)}
+.ann{position:absolute;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+  letter-spacing:.2em;color:#A7ABB1;text-transform:uppercase}
+.ann b{display:block;font-weight:400;color:#F2F1ED}
+
+/* ---- principles list ------------------------------------------------- */
+.plist{margin-top:34px;display:flex;flex-direction:column;gap:16px;max-width:620px}
+.plist>div{display:flex;align-items:flex-start;gap:14px}
+.plist i{display:block;width:40px;height:1px;background:rgba(242,241,237,.4);margin-top:9px;flex:none}
+.plist b{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:500;font-size:11px;
+  letter-spacing:.22em;color:#F2F1ED;text-transform:uppercase}
+.plist span{display:block;font-size:14.5px;line-height:1.65;color:#A7ABB1;margin-top:5px;max-width:52ch}
+
+/* ---- closing --------------------------------------------------------- */
+#s7 .in{min-height:70svh;display:flex;flex-direction:column;justify-content:center}
+#s7 h2{font-size:clamp(32px,5vw,72px)}
+.ctas{display:flex;flex-wrap:wrap;gap:14px 18px;align-items:center;margin-top:36px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 30px;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.24em;text-decoration:none;
+  text-transform:uppercase;transition:background .35s,color .35s,border-color .35s}
+.btn-p{color:#F2F1ED;border:1px solid rgba(242,241,237,.45)}
+.btn-p:hover{background:#F2F1ED;color:#050505;border-color:#F2F1ED}
+.btn-s{color:#A7ABB1;border-bottom:1px solid rgba(167,171,177,.45);min-height:44px;padding:0 2px}
+.btn-s:hover{color:#F2F1ED;border-bottom-color:#F2F1ED}
+.btn:focus-visible{outline:1px solid #A7ABB1;outline-offset:4px}
+
+footer.site{border-top:1px solid rgba(242,241,237,.14);margin:10svh 7vw 0;padding:30px 0 40px}
+footer.site .row{display:flex;flex-wrap:wrap;gap:16px 44px;justify-content:space-between;align-items:flex-start}
+footer.site .b1{display:block;font-weight:600;font-size:12px;letter-spacing:.34em}
+footer.site .b2{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+  letter-spacing:.18em;color:#A7ABB1;margin-top:9px}
+footer.site nav{display:flex;flex-direction:column;gap:9px}
+footer.site nav a{display:inline-flex;align-items:center;min-height:44px;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.18em;
+  color:#A7ABB1;text-decoration:underline;text-underline-offset:3px}
+footer.site nav a:hover{color:#F2F1ED}
+footer.site .legal{margin-top:26px;max-width:74ch;font-size:12.5px;line-height:1.75;color:rgba(167,171,177,.85)}
+footer.site .cr{margin-top:18px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+  letter-spacing:.2em;color:#A7ABB1}
+
+/* ---- chapter indicator + rail ---------------------------------------- */
+#tm-ch{position:fixed;left:26px;bottom:22px;z-index:40;display:flex;gap:9px;align-items:baseline;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.2em;color:#F2F1ED}
+#tm-ch .dim{color:#A7ABB1}
+#tm-rail{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:40;width:1px;height:34svh;
+  background:rgba(242,241,237,.14)}
+#tm-pd{position:absolute;left:-1.5px;top:0;width:4px;height:4px;background:#F2F1ED}
+
+/* ---- cursor dot (fine pointers, like the main page) ------------------ */
+#tm-cd{position:fixed;left:0;top:0;z-index:100;width:4px;height:4px;background:#F2F1ED;
+  pointer-events:none;display:none}
+
+/* ---- mobile art direction -------------------------------------------- */
+@media (max-width:759px){
+  header.site{padding:16px 16px}
+  header.site nav a{padding:10px 8px;letter-spacing:.2em}
+  header.site .brand i{letter-spacing:.3em}
+  .pad{padding:13svh 7vw}
+  #s1{padding-bottom:16svh}
+  #s1 .meta{display:none}
+  #tm-ch{left:16px;bottom:16px}
+  #tm-rail{display:none}
+  #tm-cv{opacity:.5}
+  p.body{font-size:16px}
+  .duo>div:last-child{margin-top:0}
+  .ann{display:none}
+}
+@media (max-width:359px){
+  #s1 h1{font-size:30px}
+}
+
+/* ---- reduced motion / no-JS: everything readable, nothing hidden ----- */
+@media (prefers-reduced-motion:reduce){
+  #tm-cv,#tm-grain,#tm-cd{display:none!important}
+  html:not(.nojs) .rv,html:not(.nojs) .fd{transform:none;opacity:1;transition:none}
+  html:not(.nojs) figure img{transform:none;opacity:1;transition:none}
+}
+.nojs #tm-cv,.nojs #tm-grain,.nojs #tm-ch,.nojs #tm-rail{display:none}
+</style>
+<script>document.documentElement.classList.remove('nojs')</script>
+</head>
+<body>
+
+<canvas id="tm-cv" aria-hidden="true"></canvas>
+<div id="tm-grain" aria-hidden="true"></div>
+
+<header class="site">
+  <a class="brand" href="/" aria-label="Ēastmans Developments, return to the main site">
+    <b>ĒASTMANS</b><i>DEVELOPMENTS</i>
+  </a>
+  <nav aria-label="Primary">
+    <a href="/team.html" aria-current="page">TEAM</a>
+    <a href="/">SITE</a>
+    <a href="/#sx-s7">CONTACT</a>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- 01 / The team --------------------------------------------------------->
+<section id="s1" data-ch="01" data-lab="The team" aria-labelledby="h-hero">
+  <p class="lab"><i></i><span>01 / The team</span></p>
+  <h1 id="h-hero">
+    <span class="rvm"><span class="rv">People who understand</span></span>
+    <span class="rvm"><span class="rv">existing buildings.</span></span>
+  </h1>
+  <p class="sub fd">Ēastmans is built around people who work hands-on with London's existing property:
+    reviewing plans, challenging details and inspecting work as it happens. Architectural, assured
+    and human. Never corporate, glossy or over-produced.</p>
+  <div class="meta fd">
+    <span class="a mono">Hands-on development management</span>
+    <span class="b mono">London-wide / East London specialists</span>
+  </div>
+  <div id="tm-cue" aria-hidden="true"></div>
+</section>
+
+<!-- 02 / Founders --------------------------------------------------------->
+<section class="pad" data-ch="02" data-lab="Founders" aria-labelledby="h-f">
+  <div class="grid2">
+    <div class="copy">
+      <p class="lab"><i></i><span>02 / Founders</span></p>
+      <h2 id="h-f">
+        <span class="rvm"><span class="rv">Natural authority,</span></span>
+        <span class="rvm"><span class="rv">not formal headshots.</span></span>
+      </h2>
+      <p class="body fd">The founders are engaged in the business rather than arranged for a portrait.
+        Around the plan table, decisions are made the same way they are on site: a drawing reviewed,
+        a detail challenged, a sequence of work talked through.</p>
+      <p class="body fd">It is a working partnership. One leads a conversation while the other tests it,
+        and the pauses between instructions are where the projects take shape.</p>
+      <div class="founders">
+        <div class="fd">
+          <b>Adnan</b>
+          <span class="role">Founder</span>
+          <p>Leads from the plan table through to the finished building, reviewing drawings and
+            walking every stage of the work.</p>
+        </div>
+        <div class="fd">
+          <b>Kashan</b>
+          <span class="role">Founder</span>
+          <p>Challenges every detail of a scheme, from planning position to the sequence of work
+            on site, before it is committed.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pic">
+      <figure>
+        <img src="/assets/team/founders-office-1600w.jpg"
+             srcset="/assets/team/founders-office-800w.jpg 800w, /assets/team/founders-office-1600w.jpg 1600w"
+             sizes="(max-width:759px) 92vw, 54vw"
+             width="1536" height="1024" alt="Adnan and Kashan reviewing drawings together at the plan table in the Ēastmans office" fetchpriority="high">
+      </figure>
+      <figcaption class="mono fd">FIG. 01 / FOUNDERS / PLAN REVIEW <em>OFFICE / E17</em></figcaption>
+    </div>
+  </div>
+</section>
+
+<!-- 03 / On site ---------------------------------------------------------->
+<section class="pad" data-ch="03" data-lab="On site" aria-labelledby="h-s" style="padding-top:6svh">
+  <div style="max-width:640px;margin-bottom:7svh">
+    <p class="lab"><i></i><span>03 / On site</span></p>
+    <h2 id="h-s">
+      <span class="rvm"><span class="rv">Hands-on development</span></span>
+      <span class="rvm"><span class="rv">management.</span></span>
+    </h2>
+    <p class="body fd">The founders are visibly involved in the property and the decisions being made:
+      speaking with the site manager, checking drawings against the work, and walking the building
+      from retained brick to new steel.</p>
+  </div>
+  <div class="wide" style="padding:0;position:relative">
+    <figure>
+      <img src="/assets/team/founders-site-mono-1600w.jpg"
+           srcset="/assets/team/founders-site-mono-800w.jpg 800w, /assets/team/founders-site-mono-1600w.jpg 1600w"
+           sizes="(max-width:759px) 92vw, 86vw"
+           width="1536" height="1024" alt="The founders in hard hats and high-visibility waistcoats discussing work with the site manager inside a stripped-back period property" loading="lazy" decoding="async">
+    </figure>
+    <figcaption class="mono fd">FIG. 02 / ACTIVE REFURBISHMENT / RETAINED FABRIC <em>DECISIONS AT THE WORKFACE</em></figcaption>
+    <span class="ann fd" style="right:2%;top:-30px;text-align:right"><b>+ RETAINED JOISTS / BRICK</b>EXISTING FABRIC KEPT VISIBLE</span>
+  </div>
+  <div class="grid2" style="margin-top:7svh">
+    <div class="copy">
+      <p class="body fd">Every walk-through happens inside recognisable London fabric: brick, joists,
+        stairs, fireplaces and sash windows. Ēastmans develops existing property, not anonymous towers,
+        and the buildings keep meaningful space in the frame.</p>
+    </div>
+    <div class="pic" style="max-width:640px">
+      <figure>
+        <img src="/assets/team/founders-site-1600w.jpg"
+             srcset="/assets/team/founders-site-800w.jpg 800w, /assets/team/founders-site-1600w.jpg 1600w"
+             sizes="(max-width:759px) 92vw, 44vw"
+             width="1536" height="1024" alt="The founders walking a stripped-back interior with the site manager, pointing out work overhead" loading="lazy" decoding="async">
+      </figure>
+      <figcaption class="mono fd">FIG. 03 / THE WALK-THROUGH <em>SITE MANAGER / FOUNDERS</em></figcaption>
+    </div>
+  </div>
+</section>
+
+<!-- 04 / Technical control ------------------------------------------------>
+<section class="pad" data-ch="04" data-lab="Technical control" aria-labelledby="h-t" style="padding-top:6svh">
+  <div class="grid2">
+    <div class="pic" style="position:relative">
+      <figure>
+        <img src="/assets/team/basement-1600w.jpg"
+             srcset="/assets/team/basement-800w.jpg 800w, /assets/team/basement-1600w.jpg 1600w"
+             sizes="(max-width:759px) 92vw, 54vw"
+             width="1536" height="1024" alt="A basement excavation beneath a retained house, with temporary works and the team reviewing a drawing from a safe platform" loading="lazy" decoding="async">
+      </figure>
+      <figcaption class="mono fd">FIG. 04 / BASEMENT EXCAVATION / TEMPORARY WORKS <em>SECTION THROUGH</em></figcaption>
+    </div>
+    <div class="copy">
+      <p class="lab"><i></i><span>04 / Technical control</span></p>
+      <h2 id="h-t">
+        <span class="rvm"><span class="rv">The complexity,</span></span>
+        <span class="rvm"><span class="rv">made visible.</span></span>
+      </h2>
+      <p class="body fd">Basement work shows what disciplined development management looks like:
+        the retained house, the excavation and the temporary works held in one readable frame,
+        with the team reviewing the sequence of work from the drawing.</p>
+      <div class="plist">
+        <div class="fd"><i></i><span><b>01 Planning</b><span>What can realistically be achieved, agreed before work begins.</span></span></div>
+        <div class="fd"><i></i><span><b>02 Coordination</b><span>Underpinning bays, steelwork and propping sequenced with the professional team.</span></span></div>
+        <div class="fd"><i></i><span><b>03 Inspection</b><span>Work checked against the drawings at every stage, in person.</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 / The wider team --------------------------------------------------->
+<section class="pad" data-ch="05" data-lab="The wider team" aria-labelledby="h-w" style="padding-top:6svh">
+  <div style="max-width:640px;margin-bottom:7svh">
+    <p class="lab"><i></i><span>05 / The wider team</span></p>
+    <h2 id="h-w">
+      <span class="rvm"><span class="rv">Real craft,</span></span>
+      <span class="rvm"><span class="rv">observed quietly.</span></span>
+    </h2>
+    <p class="body fd">The contractors around Ēastmans carry out genuine work: measuring, setting out,
+      brick repair, carpentry and careful structural tasks, photographed as they happen rather than
+      staged for the camera.</p>
+  </div>
+  <div class="duo">
+    <div>
+      <figure>
+        <img src="/assets/team/contractors-1600w.jpg"
+             srcset="/assets/team/contractors-800w.jpg 800w, /assets/team/contractors-1600w.jpg 1600w"
+             sizes="(max-width:759px) 92vw, 43vw"
+             width="1536" height="1024" alt="A contractor carrying out careful work inside a period property, original doors and brickwork visible" loading="lazy" decoding="async">
+      </figure>
+      <figcaption class="mono fd">FIG. 05 / CRAFT / FIRST FIX <em>ORIGINAL FABRIC RETAINED</em></figcaption>
+    </div>
+    <div>
+      <figure>
+        <img src="/assets/team/machinery-1600w.jpg"
+             srcset="/assets/team/machinery-800w.jpg 800w, /assets/team/machinery-1600w.jpg 1600w"
+             sizes="(max-width:759px) 92vw, 43vw"
+             width="1536" height="1024" alt="An operator working a compact excavator at residential scale, with the retained period house behind" loading="lazy" decoding="async">
+      </figure>
+      <figcaption class="mono fd">FIG. 06 / GROUNDWORKS / RESIDENTIAL SCALE <em>THE HOUSE STAYS IN FRAME</em></figcaption>
+    </div>
+  </div>
+</section>
+
+<!-- 06 / The result ------------------------------------------------------->
+<section class="pad" data-ch="06" data-lab="The result" aria-labelledby="h-r" style="padding-top:6svh">
+  <div class="wide" style="padding:0;position:relative">
+    <figure>
+      <img src="/assets/team/completed-1600w.jpg"
+           srcset="/assets/team/completed-800w.jpg 800w, /assets/team/completed-1600w.jpg 1600w"
+           sizes="(max-width:759px) 92vw, 86vw"
+           width="1536" height="1024" alt="A completed period property, restored brick and windows, the founders walking away in conversation" loading="lazy" decoding="async">
+    </figure>
+    <figcaption class="mono fd">FIG. 07 / COMPLETED PERIOD PROPERTY <em>RETAINED CHARACTER / USEFUL IMPROVEMENT</em></figcaption>
+  </div>
+  <div style="max-width:640px;margin-top:7svh">
+    <p class="lab"><i></i><span>06 / The result</span></p>
+    <h2 id="h-r">
+      <span class="rvm"><span class="rv">It ends with the building,</span></span>
+      <span class="rvm"><span class="rv">not a victory pose.</span></span>
+    </h2>
+    <p class="body fd">Completion is calm and considered: restored brick, windows, joinery and
+      entrances, with any new work carefully integrated. The founders walk on to the next
+      conversation, and the building speaks for itself.</p>
+  </div>
+</section>
+
+<!-- 07 / Introduction ----------------------------------------------------->
+<section class="pad" data-ch="07" data-lab="Introduction" aria-labelledby="h-c">
+  <div class="in" style="max-width:820px">
+    <p class="lab"><i></i><span>07 / Introduction</span></p>
+    <h2 id="h-c">
+      <span class="rvm"><span class="rv">Meet the people</span></span>
+      <span class="rvm"><span class="rv">behind the plan.</span></span>
+    </h2>
+    <p class="body fd">If you would like to understand more about Ēastmans, our development approach
+      and how we work with private investors, start with a private introduction.</p>
+    <div class="ctas fd">
+      <a class="btn btn-p" href="/#sx-s7">REQUEST A PRIVATE INTRODUCTION</a>
+      <a class="btn btn-s" href="/">EXPLORE ĒASTMANS</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="row">
+    <div>
+      <span class="b1">ĒASTMANS DEVELOPMENTS</span>
+      <span class="b2">PROPERTY DEVELOPMENT AND PRIVATE INVESTMENT / LONDON</span>
+    </div>
+    <nav aria-label="Footer">
+      <a href="/">Return to the main site</a>
+    </nav>
+  </div>
+  <p class="legal">Information presented on this website is provided for general introductory purposes
+    only. It does not constitute investment, financial, legal or tax advice, or an offer or
+    recommendation to invest.</p>
+  <p class="cr">© 2026 ĒASTMANS DEVELOPMENTS. ALL RIGHTS RESERVED.</p>
+</footer>
+
+<div id="tm-ch" aria-hidden="true"><span id="tm-chn">01</span><span class="dim">/ 07</span><span id="tm-chl" class="dim">THE TEAM</span></div>
+<div id="tm-rail" aria-hidden="true"><div id="tm-pd"></div></div>
+<div id="tm-cd" aria-hidden="true"></div>
+
+<script>
+(function () {
+  'use strict';
+  var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- reveals: the main page's masked-line grammar -------------------- */
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      if (el.tagName === 'FIGURE' || el.classList.contains('fd')) el.classList.add('on');
+      el.querySelectorAll('.rv').forEach(function (r, i) {
+        setTimeout(function () { r.classList.add('on'); }, RM ? 0 : i * 110);
+      });
+      io.unobserve(el);
+    });
+  }, { rootMargin: '0px 0px -12% 0px' });
+  document.querySelectorAll('h1, h2, .fd, figure').forEach(function (el) { io.observe(el); });
+
+  /* ---- chapter indicator + progress rail ------------------------------ */
+  var chn = document.getElementById('tm-chn'), chl = document.getElementById('tm-chl');
+  var sio = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      chn.textContent = e.target.getAttribute('data-ch');
+      chl.textContent = e.target.getAttribute('data-lab').toUpperCase();
+    });
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  document.querySelectorAll('section[data-ch]').forEach(function (s) { sio.observe(s); });
+
+  var pd = document.getElementById('tm-pd'), rail = document.getElementById('tm-rail');
+  var docH = 1, railH = 1;
+  function measure() {
+    docH = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+    railH = rail ? rail.offsetHeight : 1;
+  }
+  measure();
+  addEventListener('resize', measure);
+
+  /* ---- atmosphere canvas: the site's drafting grid, drifting ----------- */
+  var cv = document.getElementById('tm-cv'), cx = cv.getContext('2d');
+  var vw = 0, vh = 0, dpr = 1, idle = 0, lastY = -1, raf = null;
+  var CROSSES = [[.16,.22],[.84,.18],[.10,.66],[.90,.72],[.5,.42],[.28,.88]];
+  function size() {
+    vw = innerWidth; vh = innerHeight;
+    dpr = Math.min(devicePixelRatio || 1, vw < 760 ? 1 : 1.5);
+    cv.width = Math.round(vw * dpr); cv.height = Math.round(vh * dpr);
+    cv.style.width = vw + 'px'; cv.style.height = vh + 'px';
+    idle = 0;
+  }
+  function line(x1, y1, x2, y2, a) {
+    cx.strokeStyle = 'rgba(242,241,237,' + a + ')';
+    cx.beginPath(); cx.moveTo(x1, y1); cx.lineTo(x2, y2); cx.stroke();
+  }
+  function draw() {
+    var y = scrollY, d = y * 0.06 % (vh * 2);
+    cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cx.clearRect(0, 0, vw, vh);
+    cx.lineWidth = 1;
+    for (var i = -1; i < 4; i++) {
+      var gy = ((i * vh * 0.5 - d) % (vh * 2) + vh * 2) % (vh * 2) - vh * 0.5;
+      line(0, gy, vw, gy, 0.045);
+    }
+    line(vw * .07, 0, vw * .07, vh, 0.05);
+    line(vw * .93, 0, vw * .93, vh, 0.05);
+    var p = y / docH;
+    CROSSES.forEach(function (c, i) {
+      var cyy = (c[1] * vh - d * (0.4 + i * 0.12)) % vh;
+      if (cyy < 0) cyy += vh;
+      var a = 0.10 + 0.05 * Math.sin(p * 6 + i);
+      line(c[0] * vw - 6, cyy, c[0] * vw + 6, cyy, a);
+      line(c[0] * vw, cyy - 6, c[0] * vw, cyy + 6, a);
+    });
+  }
+  function tick() {
+    raf = requestAnimationFrame(tick);
+    var y = scrollY;
+    if (y === lastY) { if (++idle > 8) { cancelAnimationFrame(raf); raf = null; } }
+    else {
+      idle = 0; lastY = y;
+      draw();
+      if (pd) pd.style.top = (Math.min(1, y / docH) * (railH - 4)) + 'px';
+    }
+  }
+  function wake() { if (!raf && !RM && !document.hidden) { idle = 0; raf = requestAnimationFrame(tick); } }
+  if (!RM) {
+    size(); draw(); wake();
+    addEventListener('scroll', wake, { passive: true });
+    addEventListener('resize', function () { size(); draw(); });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden && raf) { cancelAnimationFrame(raf); raf = null; } else wake();
+    });
+  }
+
+  /* ---- grain (static texture, as on the main page) --------------------- */
+  if (!RM) {
+    var g = document.createElement('canvas'); g.width = g.height = 120;
+    var gx = g.getContext('2d'), id = gx.createImageData(120, 120);
+    for (var i = 0; i < id.data.length; i += 4) {
+      var v = Math.random() * 255 | 0;
+      id.data[i] = id.data[i + 1] = id.data[i + 2] = v; id.data[i + 3] = 255;
+    }
+    gx.putImageData(id, 0, 0);
+    var ge = document.getElementById('tm-grain');
+    ge.style.backgroundImage = 'url(' + g.toDataURL() + ')';
+    ge.style.backgroundSize = '120px 120px';
+    ge.style.mixBlendMode = 'screen';
+    ge.style.opacity = 0.05;
+  }
+
+  /* ---- cursor dot on fine pointers ------------------------------------- */
+  if (!RM && matchMedia('(pointer: fine)').matches) {
+    var cd = document.getElementById('tm-cd');
+    document.documentElement.style.cursor = 'none';
+    document.querySelectorAll('a').forEach(function (el) { el.style.cursor = 'none'; });
+    cd.style.display = 'block';
+    addEventListener('mousemove', function (e) {
+      cd.style.transform = 'translate(' + (e.clientX - 2) + 'px,' + (e.clientY - 2) + 'px)';
+    }, { passive: true });
+  }
+})();
+</script>
+</body>
+</html>
